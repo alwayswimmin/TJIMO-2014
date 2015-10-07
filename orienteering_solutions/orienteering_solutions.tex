@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Orienteering Solutions}}
+
+\begin{enumerate}
+\setcounter{enumi}{-1}
+
+\item Dr. Osborne's math test had 75 problems: 10 pre-algebra, 30 trigonometry, and 35 algebra. The average number of questions answered correctly was 70\% of the pre-algebra, 40\% of the trigonometry, and 60\% of the algebra problems. Tina got the average score, but she did not get a 60\% passing grade on the test. How many more problems would she have needed to answer correctly to earn a 60\% passing grade?
+\begin{answer}
+5.
+\end{answer}
+
+\begin{solution} We know that Tina got the average score on the test, the average score was: $0.7(10)$ pre-algebra questions, $0.4(30)$ trigonometry questions, and $0.6(35)$ of the algebra questions. The total number of questions that she answered correctly is $7+12+21=40$ questions. To get a 60\% passing grade, she would have had to answer $0.6(75) = 45$ questions. $45-40 = 5$.
+\end{solution}
+
+\item Two standard dice are thrown, a red die and a blue die. If the sum of two dice is computed, what is the probability of getting a sum of 6 or 7?
+\begin{answer}
+$\frac{11}{36}$.
+\end{answer}
+\begin{solution}
+The combinations of numbers that sum to 6 on the two different dice is $5$: $1+5$; $5+1$; $2+4$; $4+2$; $3+3$. The number of combinations of numbers that sum to 7 on the two different dice is $6$: $1+6$; $6+1$; $2+5$; $5+2$; $3+4$; $4+3$. $\frac{5+6}{36} = \frac{11}{36}$.
+\end{solution}
+
+\item In September of 2014, the value of one gram of gold is \$39.11.  Each month following September, the value increases by 11\%.  If Sarah bought 9 grams of gold in September, how much will that gold be worth in the December of 2014?
+\begin{answer}
+\$481.39.
+\end{answer}
+\begin{solution}
+The value of one gram of gold after $n$ months is: $\$39.11\cdot (1.11)^n$.  After 3 months the value of one gram will be: $\$39.11 \cdot (1.11)^3 = \$53.48$. The value of 9 grams would be $\$53.48\cdot 9=\$481.39$.
+\end{solution}
+
+\item Jenny recently got a new phone, and as a benefit to her new contract, she gets to choose her own phone number! How many different phone number can be made if the first digit of her 10 digit phone number cannot be 1 or 7?
+\begin{answer}
+8,000,000,000.
+\end{answer}
+\begin{solution}
+The total number of phone numbers is $8*10^9 = 8,000,000,000$.
+\end{solution}
+
+\item How many different combinations of \$5 bills and \$2 bills can be used to make a total of \$27? (Order does not matter)
+\begin{answer}
+3.
+\end{answer}
+\begin{solution}
+We could have any of 1,2,3,4, or 5 \$5 bills, however the difference between the value of the \$5 bills and \$27 needs to be even because the only other bill we have is \$2 bills. Overall, we can have 1,3, or 5 \$5 bills.
+\end{solution}
+
+\item Sam’s house has a rectangular driveway with an area of 18126 ft$^2$.  The residents of his neighborhood are required to have their driveway repainted every year.  If the cost of paint for each square yard is 25 cents, what is the total amount of money that Sam pays for his driveway in 3 years?
+\begin{answer}
+\$503.50.
+\end{answer}
+\begin{solution}
+A square yard is $3*3=9$ ft$^2$. The total cost of paint is: $\frac{18126}{9} \cdot \$0.25 = \$503.50$.
+\end{solution}
+
+\item There are 119 students on varsity math team, other than Tom and Jerry. Everyone is either biologists, physicists, or both.  Tom has 72 friends and he is only friends with physicists. Jerry has 54 friends he is only friends with biologists. How many people are both physicists and biologists on math team, not including Tom and Jerry?
+\begin{answer}
+7.
+\end{answer}
+\begin{solution}
+Using the Principle of Inclusion-Exclusion, we know that the number of people that are both physicists and biologists are
+\[(54 + 72) - 119 = 7.\]
+\end{solution}
+
+\item If a clock runs twice as fast as usual, how many times do the minute and hour hands of a clock coincide in 1 day?
+\begin{answer}
+44.
+\end{answer}
+\begin{solution}
+In a normal day, the hands meet 22 times. If a clock runs twice as fast as usual, it accounts for 48 hours in one day. To count the number of intersections, we can split these 48 hours into 4 blocks of 12:00 to 11:00, because there is no intersection of the hands between 11:00 and 12:00.  In this span of 11 hours there is always 11 intersections, so the total number of intersections of the minute and hour hands is $11 \cdot 4=44$.
+\end{solution}
+
+\item Compute the sum $214 + 215 + 216 + \ldots + 2012 + 2013 + 2014$.
+\begin{answer}
+2006314.
+\end{answer}
+\begin{solution}
+The sum of the numbers from 1 to 213 is $\frac{213 \cdot 214}{2} = 22791$. The sum of numbers 1-2014 is $\frac{2014 \cdot 2015}{2} = 2029105$, so the sum $214 + 215 + 216 + ... + 2012 + 2013 + 2014 = 2029105 - 22791 = 2006314$.
+\end{solution}
+
+\end{enumerate}
+
+\end{document}
+

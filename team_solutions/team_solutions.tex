@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Team Solutions}}
+
+\begin{enumerate}
+
+
+\item Let $a_b$ be a number expressed in base $b$. Express\[2014_{5}+2014_{6}+2014_{7}+2014_{8}+2014_{9}\]in base 10.
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{3905}
+\end{answer}
+
+\begin{solution}
+Converting all five numbers into base 10, we have
+\begin{align*}
+2014_5 &= 4 \times 1 + 1 \times 5 + 0 \times 25 + 2 \times 125 = 259_{10}, \\ 2014_6 &= 4 \times 1 + 1 \times 6 + 0 \times 36 + 2 \times 216 = 442_{10}, \\ 2014_7 &= 4 \times 1 + 1 \times 7 + 0 \times 49 + 2 \times 343 = 697_{10}, \\ 2014_8 &= 4 \times 1 + 1 \times 8 + 0 \times 64 + 2 \times 512 = 1036_{10}, \\ 2014_9 &= 4 \times 1 + 1 \times 9 + 0 \times 81 + 2 \times 729 = 1471_{10}.
+\end{align*}
+Thus\begin{align*}2014_5 + 2014_6 + 2014_7 + 2014_8 + 2014_9 &= 259_{10} + 442_{10} + 697_{10} + 1036_{10} + 1471_{10} \\&= 3905_{10}.\end{align*}
+\end{solution}
+
+\item Let $ABCD$ be a square of sidelength 7. $E$ is the point on segment $AB$ such that $AE = 4$, $F$ is the point on segment $BC$ such that $BF = 5$, $G$ is the point on segment $CD$ such that $CG = 2$, and $H$ is the point on segment $DA$ such that $DH = 3$. Find the area of hexagon $AEFCGH$.
+
+%\textit{Robin Park}
+
+
+\begin{figure}[h]
+\begin{center}
+\begin{asy}
+import olympiad;
+size(100);
+pen dps=linewidth(0.7)+fontsize(8);
+pen s = fontsize(8);
+defaultpen(dps);
+pair A = (0,0), B = (7,0), C = (7,7), D = (0, 7);
+pair E = (4,0), F = (7,5), G = (5,7), H = (0, 4);
+
+draw(A--B--C--D--A);
+draw(E--F, linetype("4 4") + linewidth(0.7));
+draw(G--H, linetype("4 4") + linewidth(0.7));
+
+label("$A$", A, SW, s);
+label("$B$", B, SE, s);
+label("$C$", C, NE, s);
+label("$D$", D, NW, s);
+label("$E$", E, S, s);
+label("$F$", F, (1,0), s);
+label("$G$", G, N, s);
+label("$H$", H, W, s);
+
+label("$4$", A--E, S, s);
+label("$5$", B--F, (1,0), s);
+label("$2$", C--G, N, s);
+label("$3$", D--H, W, s);
+
+\end{asy}
+\end{center}
+\end{figure}
+
+\begin{answer}
+\boxed{33}
+\end{answer}
+\begin{solution}
+Note that $[AEFCGH] = [ABCD] - [BEF] - [DGH]$, so the area of $AEFCGH$ is $49 - \frac{1}{2} \cdot 5 \cdot 3 - \frac{1}{2} \cdot 5 \cdot 3 = 49 - 15 = 34$.
+\end{solution}
+
+\item Ashley rolls an $n$-sided die (numbered 1 through $n$) $n$ times, where $n$ is a positive integer. If the probability that she rolls at least one 1 is equal to $\frac{175}{n^n}$, find the value of $n$.
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{4}
+\end{answer}
+
+\begin{solution}
+The probability that she does not roll a 1 is $\frac{n-1}{n}$, so the probability that she rolls zero 1s is equal to $\left(\frac{n-1}{n}\right)^n$. Hence the probability that she rolls at least one 1 is equal to $1 - \frac{(n-1)^n}{n^n} = \frac{175}{n^n}$, so\[n^n - (n-1)^n = 175.\]Solving this equation for integral $n$ yields $n = 4$.
+\end{solution}
+
+\item Let $ABCDEFGH$ be a regular octagon. Find the value of\[\angle ABH + \angle ACH + \angle ADH + \angle AEH + \angle AFH + \angle AGH.\]
+
+%\textit{Robin Park}
+
+\begin{figure}[h]
+\begin{center}
+\begin{asy}
+import olympiad;
+size(100);
+pen dps=linewidth(0.7)+fontsize(8);
+pen s = fontsize(8);
+defaultpen(dps);
+pair D = (cos(22.5*pi/180), sin(22.5*pi/180));
+pair C = (cos(67.5*pi/180), sin(67.5*pi/180));
+pair B = (cos(112.5*pi/180), sin(112.5*pi/180));
+pair A = (cos(157.5*pi/180), sin(157.5*pi/180));
+pair H = (cos(202.5*pi/180), sin(202.5*pi/180));
+pair G = (cos(247.5*pi/180), sin(247.5*pi/180));
+pair F = (cos(292.5*pi/180), sin(292.5*pi/180));
+pair E = (cos(337.5*pi/180), sin(337.5*pi/180));
+
+draw(A--B--C--D--E--F--G--H--A);
+draw(circumcircle(A, B, C));
+
+label("$A$", A, WNW, s);
+label("$B$", B, NNW, s);
+label("$C$", C, NNE, s);
+label("$D$", D, ENE, s);
+label("$E$", E, ESE, s);
+label("$F$", F, SSE, s);
+label("$G$", G, SSW, s);
+label("$H$", H, WSW, s);
+
+\end{asy}
+\end{center}
+\end{figure}
+
+
+\begin{answer}
+\boxed{135^\circ}
+\end{answer}
+
+\begin{solution}
+Let $\omega$ be the circumcircle of $ABCDEFGH$. Note that all of the angles in the desired sum intercepts arc $AH$ of $\omega$, which measures 45 degrees. Therefore all of the measures of the angles equal $22.5^\circ$, so the answer is $22.5^\circ \cdot 6 = 135^\circ$.
+\end{solution}
+
+\item Find the remainder when \[7 \times 77 \times 777 \times 7777 \times \cdots \times \underbrace{777\cdots 77}_{\text{2014 7's}}\]is divided by 8.
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{3}
+\end{answer}
+
+\begin{solution}
+Note that $7 \equiv 7 \pmod{8}$, $77 \equiv 5 \pmod{8}$, and $777 \equiv 1 \pmod{8}$. By the divisibility rule for 8, every other number in the product also gives a remainder of 1 when divided by 8. Therefore,\begin{align*}7 \times 77 \times 777 \times 7777 \times \cdots \times \underbrace{777\cdots 77}_{\text{2014 7's}} &\equiv 7 \times 5 \times 1 \times 1 \times 1 \times \cdots \times 1 \\&\equiv 35 \equiv 3\pmod{8}.\end{align*}
+\end{solution}
+
+\item The diagonal of a rectangle has length 21, and its area is equal to 200. What is the sum of the width and length of the rectangle? 
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{29}
+\end{answer}
+
+\begin{solution}
+Let $\ell$ and $w$ be the length and width of the rectangle, respectively. The length of the diagonal is $\sqrt{\ell^2 + w^2}$, so $\ell^2 + w^2 = 441$ and $\ell w = 200$. Then $(\ell + w)^2 = \ell^2 + 2\ell w + w^2 = 441 + 2 \cdot 200 = 841$, so it follows that $\ell + w = 29$.
+\end{solution}
+
+\item There are 107 playable characters in the game Dota 2, in which two teams of five players face off against each oher. Each team is allowed to ban 5 characters from the 107 characters, so that the opposing team cannot choose any of those five characters. Kevin, Perry, Junyoung, Minjae, and Jonathan decide to play a game of Dota 2. Kevin only knows how to play the characters Lich and Alchemist. If the other team selects five characters to ban randomly, find the probability that Kevin is able to play either Lich or Alchemist, assuming that none of his teammates choose either Lich or Alchemist. 
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{\tfrac{5661}{5671}}
+\end{answer}
+
+\begin{solution}
+The number of ways that the other team can ban both Lich and Alchemist is $\binom{105}{3}$, since they have three more characters to ban out of the remaining 105. The total number of ways they can ban 5 characters is $\binom{107}{5}$. Thus, the probability that Kevin cannot play either Lich or Alchemist is\[\frac{\binom{105}{3}}{\binom{107}{5}} = \frac{10}{5671}.\] Hence, the probability that Kevin is able to play either Lich or Alchemist is $1 - \frac{10}{5671} = \frac{5661}{5671}$.
+\end{solution}
+
+\item Let $ABC$ be a triangle such that $AB = 13$, $BC = 14$, and $CA = 15$. Squares $ABEF$ and $BCGH$ are drawn outside of triangle $ABC$. Find the area of triangle $BEH$.
+
+%\textit{Robin Park}
+
+\begin{figure}[h]
+\begin{center}
+\begin{asy}
+import olympiad;
+size(200);
+pen dps=linewidth(0.7)+fontsize(8);
+pen s = fontsize(8);
+defaultpen(dps);
+pair A = (0,0), B = (5,12), C = (14,0);
+pair E = (-7, 17), F = (-12, 5), G = (26,9), H = (17, 21);
+draw(A--B--C--A);
+draw(B--E--F--A);
+draw(C--G--H--B);
+draw(E--H,linetype("4 4") + linewidth(0.7));
+draw(A--(-4, 24)--B, linetype("4 4")+linewidth(0.7));
+
+label("$A$", A, SSW, s);
+label("$B$", B, N, s);
+label("$C$", C, SSE, s);
+label("$E$", E, NW, s);
+label("$F$", F, WSW, s);
+label("$G$", G, ESE, s);
+label("$H$", H, NNE,s);
+label("$H'$", (-4,24),NW, s);
+
+\end{asy}
+\end{center}
+\end{figure}
+
+\begin{answer}
+\boxed{84}
+\end{answer}
+
+\begin{solution1}
+Rotate $\triangle BEH$ $90^\circ$ such that $E$ coincides with $A$, and $H$ goes to $H'$. Since $\angle HBH' + \angle HBC = 90^\circ + 90^\circ = 180^\circ$, $H'$, $B$, and $C$ lie on a line, and because $H'B = BH = BC$, $B$ is the midpoint of segment $H'C$. Therefore $[BEH] = [BAH'] = [ABC] = 84$, which we can deduce from Heron's Formula.
+\end{solution1}
+
+\begin{solution2}
+Note that\begin{align*}[BEH] &= \frac{1}{2} \cdot BE \cdot BH \cdot  \sin \angle EBH \\&= \frac{1}{2} \cdot AB \cdot BC \cdot \sin (180^\circ - \angle ABC) \\&= \frac{1}{2} \cdot AB \cdot BC \cdot \sin \angle ABC = [ABC].\end{align*}The rest of the solution follows as before.
+\end{solution2}
+
+\item If Zalec Hang is playing a game where he randomly picks three distinct numbers from 1 to 10. What is the probability that no two numbers that Zalec chose are consecutive?
+
+%\textit{Kevin Lin}
+
+\begin{answer}
+\boxed{174}
+\end{answer}
+
+\begin{solution}
+The total number of possible combinations that Zalec can choose without enforcing the restriction is $\binom{10}{3} = 120$. By imposing the non-consecutive restriction, we can "take out" two numbers, working instead from 1 to 8. Whatever numbers we choose, we can add 1 to the second-largest number and 2 to the largest number. For example, if we choose 1,7, and 8 from this, this would turn into 1, 8, and 10, etc. Therefore, our answer is $\frac{\binom{8}{3}}{\binom{10}{3}} = \frac{56}{120} = \frac{7}{15}$. 
+
+\end{solution}
+
+\item Define the function $f(x, y, z)$ by\[f(x, y, z) = x^{y^z} - x^{z^y} + y^{z^x} - y^{x^z} + z^{x^y} - z^{y^x}.\]Find the value of\[f(7, 8, 9) + f(7, 9, 8) + f(8, 7, 9) + f(8, 9, 7) + f(9, 7, 8) + f(9, 8, 7).\]
+
+%\textit{Robin Park}
+
+\begin{answer}
+\boxed{0}
+\end{answer}
+
+\begin{solution}
+Observe that
+\begin{align*}
+&f(x, y, z) + f(x, z, y) \\&= (x^{y^z} - x^{z^y} + y^{z^x} - y^{x^z} + z^{x^y} - z^{y^x}) + (x^{z^y} - x^{y^z} + z^{y^x} - z^{x^y} + y^{x^z} - y^{z^x}) \\&= (x^{y^z} - x^{y^z}) - (x^{z^y} - x^{z^y}) + (y^{z^x} - y^{z^x}) - (y^{x^z} - y^{x^z}) + (z^{x^y} - z^{x^y}) - (z^{y^x} - z^{y^x}) \\&= 0.
+\end{align*}
+Thus,\[(f(7, 8, 9) + f(7, 9, 8)) + (f(8, 7, 9) + f(8, 9, 7)) + (f(9, 7, 8) + f(9, 8, 7)) = 0.\]
+
+\end{solution}
+
+\end{enumerate}
+
+
+\eject
+
+
+\end{document}

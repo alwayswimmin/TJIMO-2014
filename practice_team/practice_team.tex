@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{Time limit: 30 minutes.}
+\newcommand{\righthead}{\fdbox{Round}{Practice Team}}
+
+
+\begin{enumerate}
+
+\item Donald's math grade is based off of 5 equally weighted tests and he needs to average a score of at least 74 to pass his math class. So far, he has taken three tests with scores of 68, 95, and 43. What score must he average on his next two tests if he is to pass his class?
+
+\item Tickets to a play are sold at different costs for adults and for children. A group of 7 adults and 4 children come and pay \$25.50. Another group of 3 adults and 10 children come and pay \$27.50. How much would a group of 2 adults and 5 children need to pay for their tickets?
+
+\item An equilateral triangle with side length 6 shares a side with a rhombus. What is the area of the equilateral triangle minus the perimeter of the rhombus?
+
+\item Jonathan is playing a game where he multiplies three consecutive positive integers together. He tells you that he got 1872, but he accidentally made one of the three numbers one larger than it should be. What should be his actual answer?
+
+\item Namita is struggling with math and needs your help! She is trying to find the distinct number of ways to arrange the letters in "`SIRENS"' without having the first letter be "`I"' or having the fourth letter be "`R"'. How many ways can she do this? 
+
+\item A square is inscribed inside a circle, which is in turn inscribed inside an equilateral triangle, which is in turn inscribed inside another circle, which is in turn inscribed inside another equilateral triangle. What is the ratio of the square's area to the large equilateral triangle's area?
+
+\item Deetree lives in Coordinateland, which is a Cartesian plane, and is late for a debate. She lives at (0,0), but her debate is at (3,5). She can only travel one unit north or one unit east at a time, but there is traffic at the point (1,4) and the point (1,3), so she wants to avoid these points. How many distinct paths can she travel to get to the debate?
+
+\item You are given a rational number $x$. You know that the cube of $x+1$ is 14.348907 and that the cube of $x-1$ is 0.079507. What is the value of $3x^2$? Express your answer as a decimal.
+
+\item Bijal's Magical Textbook Emporium, which has an unlimited stock of textbooks, sells only three kinds of textbooks: physics, chemistry, and Spanish. A textbook of any subject is indistinguishable from another of that subject. If Bill decides to buy six textbooks, how many distinct combinations of textbooks could he buy?
+
+\item Ashley is being bothered by a pesky robin which leaves colored eggs around her house. Her house has four rooms: a kitchen, a living room, a bedroom, and a bathroom. The robin leaves 6 eggs with at least 1 egg in each room, with each egg being one of four colors: blue, red, green, or yellow. If the robin randomly chooses one of the distinct possible arrangements, what is the probability that after the robin leaves his eggs, Ashley's bedroom has three yellow eggs in it?
+
+\end{enumerate}
+
+
+\eject
+
+
+\end{document}
+

@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Practice Team Solutions}}
+
+\begin{enumerate}
+
+
+\item Donald's math grade is based off of 5 equally weighted tests and he needs to average a score of at least 74 to pass his math class. So far, he has taken three tests with scores of 68, 95, and 43. What score must he average on his next two tests if he is to pass his class?
+
+\begin{answer}
+82.
+\end{answer}
+\begin{solution}
+He needs a total of 74 $\times$ 5 points, which is 370 points. He currently has $68+95+43 =$ 206 points, meaning that he needs $370-206 =$ 164 more points over two tests. Thus he needs to average $\frac{164}{2} = \boxed{82}$.
+\end{solution}
+\item Tickets to a play are sold at different costs for adults and for children. A group of 7 adults and 4 children come and pay \$25.50. Another group of 3 adults and 10 children come and pay \$27.50. How much would a group of 2 adults and 5 children need to pay for their tickets?
+
+\begin{answer}
+\$15.
+\end{answer}
+\begin{solution}
+We write a system of equations with $x$ as the price for adults and $y$ as the price for children:
+\begin{align*}
+7x + 4y &= 25.5 \\
+3x + 10y &= 27.5
+\end{align*}
+Solving, we find that $x = \$2.50$ and $y = \$2.00$. We are looking for $2x+5y$, which is $\boxed{\$15}$.
+\end{solution}
+
+\item An equilateral triangle with side length 6 shares a side with a rhombus. What is the ratio of the area of the equilateral triangle to the perimeter of the rhombus?
+
+\begin{answer}
+$\frac{3\sqrt{3}}{8}$.
+\end{answer}
+\begin{solution}
+The area of the equilateral triangle is $9\sqrt{3}$ by using the formula for an equilateral triangle, $A = \frac{s^{2}\times\sqrt{3}}{4}$. If needed, explain this using 30-60-90 triangles to find the altitude and then applying $A = \frac{b\times h}{2}$. The perimeter of the rhombus is $6\times4 = 24$. Thus, the answer is $\frac{9\sqrt{3}}{24} = \boxed{\frac{3\sqrt{3}}{8}}$.
+\end{solution}
+
+\item Jonathan is playing a game where he multiplies three consecutive positive integers together. He tells you that he got 1872, but he accidentally made one of the three numbers one larger than it should be. What should be his actual answer?
+
+\begin{answer}
+1716.
+\end{answer}
+\begin{solution}
+There are many factors of 2 and 3 to take out of this, and prime factorization yields $2^{4}\times 3^{2} \times 13$. This is seen to be $12\times 12 \times 13$, and the actual answer we are looking for must therefore be $11\times 12 \times 13$, which is \boxed{1716}.
+\end{solution}
+
+\item Namita is struggling with math and needs your help! She is trying to find the distinct number of ways to arrange the letters in ``SIRENS" without having the first letter be ``I" or having the fourth letter be ``R". How many ways can she do this?
+
+\begin{answer}
+252.
+\end{answer}
+\begin{solution}
+We first find the total number of ways to distinctly arrange the letters, which is $\frac{6!}{2!}$, or 360. Having the first letter as "`I"' gives $\frac{5!}{2!}$ to arrange the rest of the letters, and similarly, having "`R"' as the fourth letter gives $\frac{5!}{2!}$ ways as well to arrange the rest of the letters. This is 60 + 60, or 120 cases that do not work. However, we have over-accounted for cases where "`I"' is the first letter AND "`R"' is the fourth letter. This yields $\frac{4!}{2!}$ cases, or 12 cases which we have subtracted twice, so we must add it back on once. Therefore, our final answer is $360-60-60+12 = \boxed{252}$ ways.
+\end{solution}
+
+\item A square is inscribed inside a circle, which is in turn inscribed inside an equilateral triangle, which is in turn inscribed inside another circle, which is in turn inscribed inside another equilateral triangle. What is the ratio of the square's area to the large equilateral triangle's area?
+
+\begin{answer}
+$\frac{\sqrt{3}}{18}$.
+\end{answer}
+\begin{solution}
+If we call a side length of the square $x$, so the area of the square is $x^2$, the radius of the smaller circle is half of the diagonal of the square, which is $\frac{x}{\sqrt{2}}$. We then construct a 30-60-90 triangle by dropping a perpendicular from the center of the triangle to a side of the smaller triangle and drawing a line from the center of the smaller triangle to an adjacent vertex. Using these two segments as well as the final leg of the triangle, which is half of the side length of the smaller triangle, we find that the radius of the larger circle, which is the hypotenuse of the 30-60-90 triangle we have chosen, is $x\times \sqrt(2)$. By constructing a similar 30-60-90 triangle for the larger triangle, dropping a perpendicular from the center to a side and drawing a line from the center to a vertex, we wish to find the side length. The radius of the large circle is across the 30 degree degree of this triangle while the half-side length of the large triangle is across the 60 degree angle. This means that half the side length of the large triangle is $sqrt(3) \times x\sqrt(2)$, and the full side length is twice that, or $2\sqrt(6)x$. Therefore, the area of this equilateral triangle is $\frac{sqrt(3)\times{(2\sqrt(6)x)}^2}{4}$, which is $6\sqrt{3}{x}^2$. The final ratio of areas is therefore $\frac{x^2}{6\sqrt{3}{x}^2}$, or $\boxed{\frac{\sqrt{3}}{18}}$.
+\end{solution}
+
+\item Deetree lives in Coordinateland, which is a Cartesian plane, and is late for a debate. She lives at (0,0), but her debate is at (3,5). She can only travel one unit north or one unit east at a time, but there is traffic at the point (1,4) and the point (1,3), so she wants to avoid these points. How many distinct paths can she travel to get to the debate?
+
+\begin{answer}
+29.
+\end{answer}
+\begin{solution}
+We repeatedly count the number of ways to get to each point in the grid, working our way upward. We do this by adding the number of ways to get to the point below and the number of ways to get to the point to the left in order to get the number of ways to get to our point. However, we do not count the points at (1,4) and (1,3), as we cannot go there. We start at (0,0) with a value of 1. (Draw a diagram for this) We then repeatedly count the number of paths to each point: the paths to (0,1) is the paths to (0,0) plus the paths to (-1,1), which is $1+0$ = 1. The paths to (1,0) is the paths to (0,0) plus the paths to (1,-1), which is $1+0$ = 1. The paths to (1,1) is the paths to (0,1) plus the paths to (1,0), which is $1+1$ = 2. We keep doing this for $0 \le x \le 3$ and $0 \le y \le 5$, until we get 7 ways to (2,5) and 22 ways to (3,4). This means that the number of ways to (3,5) is therefore $7+22 = \boxed{29}$ ways.
+\end{solution}
+
+\item You are given a rational number $x$. You know that the cube of $x+1$ is 14.348907 and that the cube of $x-1$ is 0.079507. What is the value of $3x^2$? Express your answer as a decimal.
+
+\begin{answer}
+6.1347.
+\end{answer}
+\begin{solution}
+We know that $(x+1)^3$ is $x^3 + 3{x}^2 + 3x + 1$ and $(x-1)^3$ is $x^3 - 3{x}^2 + 3x - 1$. Therefore,
+\begin{align*}
+x^3 + 3{x}^2 + 3x + 1 &= 14.348907 \\
+x^3 - 3{x}^2 + 3x - 1 &= 0.079507
+\end{align*}
+By subtracting these two equations, we get $6{x}^2 + 2 = 14.2694$, so $3{x}^2 + 1 = 7.1347$ and $3{x}^2 = \boxed{6.1347}$
+\end{solution}
+
+\item Bijal's Magical Textbook Emporium, which has an unlimited stock of textbooks, sells only three kinds of textbooks: physics, chemistry, and Spanish. A textbook of any subject is indistinguishable from another of that subject. If Bill decides to buy six textbooks, how many distinct combinations of textbooks could he buy?
+
+\begin{answer}
+28.
+\end{answer}
+\begin{solution}
+This is a classic stones and dividers problem. We need 2 dividers to separate the books into three categories, and we have 6 books or "`stones"'. We can arbitrarily define objects to the left of the first divider as physics, between the two dividers as chemistry, and to the right of the last divider as Spanish. This means that the total number of combinations is $\frac{8!}{6!2!}$, or 28 ways.
+\end{solution}
+
+\item Ashley is being bothered by a pesky robin which leaves colored eggs around her house. Her house has four rooms: a kitchen, a living room, a bedroom, and a bathroom. The robin leaves 6 eggs with at least 1 egg in each room, with each egg being one of four colors: blue, red, green, or yellow. If the robin randomly chooses one of the distinct possible arrangements, what is the probability that after the robin leaves his eggs, Ashley's bedroom has three yellow eggs in it?
+
+\begin{answer}
+$\frac{1}{230}$.
+\end{answer}
+\begin{solution}
+
+Lets start with the total number of ways to arrange eggs, not accounting for color. We can either have a 2,2,1,1 arrangement or a 3,1,1,1 arrangement. There are 6 ways to choose the rooms for the 2,2,1,1 arrangement and 4 ways for the 3,1,1,1 arrangement. Now taking into account color, any room with 3 eggs can get color calculated by using 3 dividers for color and 3 stones, so there are $\frac{6!}{3!3!} = 20$ ways. Similarly, for 2 and 1 egg(s), we see that there are $\frac{5!}{3!2!} = 10$ ways and $\frac{4!}{3!1!} = 4$ ways, respectively. Therefore, the total number of 2,2,1,1 arrangements are $6 \times 10 \times 10 \times 4 \times 4 = 9600$ ways and the total number of 3,1,1,1 arrangements are $4 \times 20 \times 4 \times 4 \times 4 = 5120$ ways. For one specific way, we need 3 yellows in a room and among $4^3 = 64$ ways for each of the 1 egg colors in the other 3 rooms. Therefore, the total probability is $\frac{64}{5120+9600} = \boxed{\frac{1}{230}}$.
+
+\end{solution}
+
+\end{enumerate}
+
+
+\eject
+
+
+\end{document}
+
+

@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=5.5in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{13em}
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Guts}}
+
+
+\section*{Set 1}
+\begin{enumerate}
+\setcounter{enumi}{0}
+\item How many integers $x$ are there such that $\left| 3x - 13 \right| < 14$?
+\item Let $H$ be a regular hexagon of area $\sqrt{3}$ and $S$ be a square of area 1. Find the ratio of the perimeter of $H$ to the perimeter of $S$.
+\item How many prime numbers are there between 40 and 80?
+\item Timely, Charming Timberman/Chopper Timothy Chachacha is currently at the origin (0, 0) and trying to get to a forest at (4, 4). If he can only move either up one unit or right one unit at a time, in how many ways can Timothy get to the forest?
+
+\end{enumerate}
+
+\eject
+
+\section*{Set 2}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item An unfair coin can land on heads, tails, or its edge. If the probability that the coin doesn’t land on heads is $\frac{2}{3}$, and the probability that the coin doesn’t land on tails is $\frac{1}{2}$, what is the probability of the coin landing on its edge?
+\item How many different ways are there to order the numbers $\{1,2,3,4,5\}$? For example, $\{3,2,5,4,1\}$ is one valid ordering.
+\item Alice, Bob, Charlie, and Dave agree on two integers $x$ and $y$, and state the following equations. % x = 3, y = 7
+\begin{description}
+\item[Alice] $x + y = 10$
+\item[Bob] $x^y = 256$
+\item[Charlie] $xy = 21$
+\item[Dave] $x^2 + y^2 = 58$
+\end{description}
+If exactly one of them is lying, who is the liar?
+\item Equilateral triangles are inscribed and circumscribed around a circle. Find the ratio between the area of the smaller triangle to the area of the larger triangle.
+\end{enumerate}
+
+\eject
+\section*{Set 3}
+\begin{enumerate}
+\setcounter{enumi}{8}
+
+\item Two numbers are said to be \emph{relatively prime} if their only common factor is 1. How many positive integers less than 100 are relatively prime to 96? %Katherine Cheng
+\item Jason is thirsty, so he is randomly choosing drinks from a cooler containing 100 lemonades, 100 love potions, and 100 water bottles. If he wants to make sure he has either at least 5 lemonades, at least 25 love potions, or at least 12 water bottles, what is the minimum number of drinks that Jason must randomly pull out from the cooler?
+\item There are two real numbers such that the square of their sum is 612 and the square of their difference is 272. Find their product.
+\item What is the ratio of the area of a regular hexagon of side length 4 to the area of an equilateral triangle with side length 1? %Harry Han
+\end{enumerate}
+
+\eject
+\section*{Set 4}
+\begin{enumerate}
+\setcounter{enumi}{12}
+\item Find the positive difference between the sum of the first 1000 odd positive integers and the sum of the first 1000 even positive integers.
+\item Kevin starts with the number 1000. Every second, he can either divide the number by 2 (rounding down), or subtract 10. What is the minimum number of seconds it takes to get the number below 0?
+\item Find the number of triangles created from three vertices of a cube that are not on a face of the cube.
+\item If $(22)(34) = 718$ in base $b$, find $b$.
+\end{enumerate}
+
+\eject
+\section*{Set 5}
+\begin{enumerate}
+\setcounter{enumi}{16}
+\item If $\log_{16}(x^2) + (\log_{16}{x})^2 = -1$, find the value of $x$.
+\item If $a$ and $b$ are positive integers, $ab = 2500$, and $\gcd(a,b) = 10$, find the largest possible value of $a$.
+\item Three circles $A$, $B$, and $C$ are mutually externally tangent (each pair of them only shares one point in common). If the radii of the three circles are 6, 7, and 8, find the area of triangle $ABC$.
+\item Pok\'{e}Farmer Kevy is raising a Pok\'{e}mon population of two-legged Mienshao and four-legged Bulbasaur. During breeding season, however, Kevy lost track of how many Pok\'{e}mon he had. However, counting their footprints, he determined that his Pok\'{e}mon had 148 legs among them. Help Kevy determine the difference between the minimum and maximum number of Pok\'{e}mon he could have.
+\end{enumerate}
+
+\eject
+\section*{Set 6}
+\begin{enumerate}
+\setcounter{enumi}{20}
+\item A 100-sided die (yes, they exist) is weighted so that the probability of rolling at most $n$ is proportional to $n$. Find the probability of rolling a 42.
+\item If I receive $1 + 2 + \cdots + n$ gifts on the $n$th day of Christmas, how many total gifts do I have by the end of the 12th day of Christmas? (For example, I have $1+(1+2)=4$ gifts at the end of the second day.) % May need to be changed
+\item Find the volume of a 10-cube (a cube in 10 dimensions) with side length 2. \\
+Hint: Look at the lower dimension cubes first (1-cube = line, 2-cube = square, 3-cube = cube).
+\item 
+\begin{multicols}{2}
+A certain strip of paper can be twisted and folded into a M\"{o}bius strip (connected at the dotted line near the 1 in the diagram) that resembles a regular hexagon when flattened (see diagram). If the width of the strip is 1, what is the length of the strip?
+
+\columnbreak
+
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+unitsize(2cm);
+
+draw((1,0)--(1/2,-sqrt(3)/2)--(-1/2,-sqrt(3)/2)--(-1,0)--(-1/2,sqrt(3)/2)--(1/2,sqrt(3)/2)--cycle);
+draw((-1,0)--(1,0));
+draw((-1/2,sqrt(3)/2)--(1/2,-sqrt(3)/2),dashed);
+draw((-1/2,-sqrt(3)/2)--(0,0),dashed);
+draw((0,0)--(1/2,sqrt(3)/2));
+draw(L=Label("1",align=E,position=0.7),(0,0)--(0,-sqrt(3)/2),linetype("2 4"));
+
+\end{asy}
+\end{center}
+
+\end{multicols}
+
+\eject
+\end{enumerate}
+
+\eject
+\section*{Set 7}
+\begin{enumerate}
+\setcounter{enumi}{24}
+
+\item A pizza of radius 6 inches is made. If $\frac{2}{3}$ of it is covered with chicken and $\frac{1}{2}$ is covered with mushrooms, what is the maximum possible area on the pizza that is only covered by chicken? Note that any area on the pizza may be covered by one topping, both, or neither. Express your answer in terms of $\pi$.
+\item Find the sum of all whole numbers less than 100 that have a remainder of 1 when divided by 2, a remainder of 2 when divided by 3, and a remainder of 4 when divided by 5.
+\item Whenever Low calls his friend High, they always begin their conversation with “Hi, High” and “Yo, Low.” Let $N$ be the number of ways to arrange the letters in “HIHIGHYOLOW”. Find the last 3 digits of $N$.
+\item Let $S$ be the set $\{1, 2, 3,..., 30\}$ and $N$ be the number of subsets $s$ of $S$ such that the sum of the elements in $s$ is greater than 232. Find the number of factors of $N$. % William Sun
+\end{enumerate}
+
+\eject
+
+\section*{Set 9}
+\begin{enumerate}
+\setcounter{enumi}{32}
+\item Mildew Dim and his archrival, Grizzly Absky, are fighting for the heart of their mutual love in a game of Prussian Poulet. Each turn, players alternate eating a piece of chicken, which has a $\frac{1}{5}$ chance being poisoned, thus killing the player. If Mildew goes first, what is the probability that he will not be poisoned before Grizzly?
+\item Find the sum of all $x$ such that $2014x^3 - 4513x^2 + 991x - 42 = 0$.
+\item Compute the number of positive integers $n$ such that $10n + 1$ divides $2014n + 47,530$.
+\item A regular pentagon has area 1. When all its diagonals are drawn, a smaller regular pentagon is outlined within the original pentagon. Find the area of the smaller pentagon.
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+unitsize(2cm);
+real c1,c2,s1,s2;
+c1 = (sqrt(5)-1)/4;
+c2 = (sqrt(5)+1)/4;
+s1 = sqrt(10+2*sqrt(5))/4;
+s2 = sqrt(10-2*sqrt(5))/4;
+pair A,B,C,D,E;
+A = (0,1);
+B = (s1,c1);
+C = (s2,-c2);
+D = (-s2,-c2);
+E = (-s1,c1);
+draw(A--B--C--D--E--cycle);
+draw(A--C--E--B--D--cycle);
+\end{asy}
+\end{center}
+\end{enumerate}
+
+\eject
+
+\end{document}

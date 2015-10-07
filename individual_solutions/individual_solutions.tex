@@ -1,0 +1,508 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Individual Solutions}}
+
+\begin{enumerate}
+
+\item %(Robin Park*) 
+The $\star$ operator is defined as the following:\[a \star b = a^2+ab-b.\]Find $(3 \star 4) \star 7$.\\
+
+\begin{answer}
+401.
+\end{answer}
+\begin{solution}
+ Plugging in values, we get $3 \star 4 = 17$ and $17 \star 7 = \framebox{401}$.
+\end{solution}
+
+\item %(Tim Cha*) 
+Suppose a semicircle lies on the hypotenuse of right triangle $ABC$ with legs $AB=6$ and $BC=8$. What is the area of the entire region? Express your answer as a common fraction in terms of $\pi$.
+
+\begin{center}
+\begin{asy}
+import olympiad;
+size(0, 100.5);
+draw((0, 0)--(10, 0)--(6.4,4.8)--cycle);
+label("$C$", (0, 0), W);
+label("$B$", (6.4, 4.8), N);
+label("$A$", (10, 0), E);
+draw((0, 0){down}..{up}(10, 0));
+markscalefactor=0.1;
+draw(rightanglemark((0, 0), (6.4, 4.8), (10, 0)));
+label("8", midpoint((0,0)--(6.4,4.8)), NW);
+label("6", midpoint((10,0)--(6.4,4.8)), NE);
+\end{asy}
+\end{center}
+
+\begin{answer}
+$\frac{48 + 25\pi}{2}$.
+\end{answer}
+\begin{solution}
+ Since triangle $ABC$ is a right triangle, we can determine that $AC = 10$, so the radius of the semicircle is $5$. To find the area of the entire region, we sum up the areas of the triangle and the semicircle: $\frac{6 \cdot 8}{2} + \frac{25\pi}{2}$ = \framebox{$\frac{48 + 25\pi}{2}$}.
+\end{solution}
+
+\item %(Alec Zhang*) 
+If $x^2+y^2 = 6$ and $x+y = 6$, find $xy$.
+
+\begin{answer}
+15.
+\end{answer}
+\begin{solution}
+ Since $x+y = 6$, $(x+y)^2 = 6^2$, so $x^2+2xy+y^2 = 36$. But we also know that $x^2+y^2 = 6$, so our expression becomes $6+2xy = 36$. Solving, we get $xy = \framebox{15}$.
+\end{solution}
+
+\item %(Daniel Ju*) 
+The side length of the base of a square pyramid is 4. If its height is 9, what is its volume?
+
+\begin{answer}
+48.
+\end{answer}
+\begin{solution}
+ The volume for a pyramid is $V = \frac{Bh}{3}$, where $B$ is the area of the base and $h$ is the altitude of the pyramid from the base to the opposite vertex. Plugging in values, we get $V = \frac{4^{2} \cdot 9}{3} = \framebox{48}$.
+\end{solution}
+
+\item %(Saroja Erabelli*) 
+Alec has $n$ lollipops, and he can divide them evenly among his 7 friends and himself at his birthday party. If Saroja crashes his party, then he can still divide them evenly among everyone. What is the least possible value of $n$?
+
+\begin{answer}
+72.
+\end{answer}
+\begin{solution}
+ Since Alec can divide the $n$ lollipops evenly among 8 people and 9 people, $n$ must be divisible by 72, and the least possible value of $n$ is $72 \cdot 1 = \framebox{72}$.
+\end{solution}
+
+\item %(Rajat Khanna*) 
+Allen has 6 apricots: 2 blue, 2 red, 1 green, and 1 black. What is the minimum number of apricots he must pick to guarantee picking a red apricot?
+
+\begin{answer}
+5.
+\end{answer}
+\begin{solution}
+ To find the minimum number of apricots Allen must pick, we must assume that Allen picks all of the other colored apricots first. After picking the 2 blue, 1 green, and 1 black apricot, we now know that the next apricot must be red, which gives us a total of \framebox{5} apricots.
+\end{solution}
+
+\item %(Tiger Zhang*) 
+A gardener wants to enclose a rectangular garden with 28 meters of fencing. What is the maximum area the gardener can enclose?
+
+\begin{answer}
+49.
+\end{answer}
+\begin{solution}
+ By testing various rectangular configurations, we can see that the rectangular shape with the maximum area given a fixed perimeter is a square. The square will have side lengths $\frac{28}{4} = 7$, and so the area is \framebox{49}.
+\end{solution}
+
+\item %(Jessica Wu*) 
+Helena flies toward Washington DC at a speed of 400 mi/hr from Barcelona, and Tara simultaneously flies from DC to Barcelona at a speed of 320 mi/hr. The distance between DC and Barcelona is 4000 miles. At what distance from Barcelona (in miles) will the two planes pass each other? Express your answer as a common fraction.
+
+\begin{answer}
+$\frac{20000}{9}$.
+\end{answer}
+\begin{solution}
+ Since Helena and Tara are flying towards each other, they will meet when they have collectively covered 4000 miles. This happens after $\frac{4000 \text{ mi}}{320 + 400 \text{ mi/hr}} = \frac{50}{9}$ hours. The distance from Barcelona is the distance Helena flew during this time period, which is $400 \text{ mi/hr} \cdot \frac{50}{9} \text{ hr}$ = \framebox{$\frac{20000}{9}$} miles.
+\end{solution}
+
+\item %(Winston Ou*) 
+Longan, lychees, and genips are members of the soapberry family. In a system of trading, four longans are equivalent to five lychees, and nine lychees can be traded for twelve genips. If a unit is equivalent to seven genips, how many units do you have if you own 24 of each soapberry? Express your answer as a common fraction.
+
+\begin{answer}
+$\frac{96}{7}$.
+\end{answer}
+\begin{solution}
+ We have 24 longans, 24 lychees, and 24 genips. Since 24 longans = 30 lychees = 40 genips, and 24 lychees = 32 genips, we have 40+32+24 = 96 genips in total, which is equivalent to \framebox{$\frac{96}{7}$} units.
+\end{solution}
+
+\item %(Rajat Khanna*) 
+Ashley and Kevin are playing a game. If Ashley gets a number, she adds 2 and gives it to Kevin. If Ashley gets a number, he adds 3 and sends it to Ashley. The first person to receive a number over 1000 wins. If Bob starts by giving Ashley 0, then who wins?
+
+\begin{answer}
+Kevin.
+\end{answer}
+\begin{solution}
+ We can see that at the end of each round of exchanges (Kevin sends to Ashley and Ashley sends to Kevin), Ashley will receive a number 5 more than she received the previous round. Therefore, since Ashley starts by receiving the number 0, Ashley will eventually receive the number 1000, and give the number 1002 to Kevin. Therefore, \framebox{Kevin} wins the game.
+\end{solution}
+
+\item %(Saroja Erabelli*) 
+How many even positive divisors does 7000000 have?
+
+\begin{answer}
+84.
+\end{answer}
+\begin{solution}
+ First, we prime factorize $7000000 = 2^6 \cdot 5^6 \cdot 7$. Each positive divisor of 7000000 can then be expressed in the form $d = 2^{e_1} \cdot 5^{e_2} \cdot 7^{e_3}$ for some integers $e_1$, $e_2$, and $e_3$ such that $0 \leq e_1 \leq 6$, $0 \leq e_2 \leq 6$, and $0 \leq e_3 \leq 1$. In order for $d$ to be even, we must have $1 \leq e_1 \leq 6$. Thus, there are $6$ choices for $e_1$, 7 choices for $e_2$, and 2 choices for $e_3$, giving a total of $6 \cdot 7 \cdot 2 = \framebox{84}$ divisors.
+\end{solution}
+
+\item %(Alec Zhang*) 
+Find the area of the ``1" shape, given that the upper curve $AB$ is a quarter-circle arc with length $\pi$, $AK = 2$, $IJ = 4$, $FG = 6$, $EF = 2$, and $DE = 2$. Express your answer in terms of $\pi$.
+
+\begin{center}
+\begin{asy}
+import olympiad;
+size(0, 200.5);
+pair A = (0, 8);
+pair B = (2, 10);
+pair C = (4, 10);
+pair D = (4, 2);
+pair E = (6, 2);
+pair F = (6, 0);
+pair G = (0, 0);
+pair H = (0, 2);
+pair I = (2, 2);
+pair J = (2, 6);
+pair K = (0, 6);
+path AB = A{right}..{up}B;
+draw(AB);
+label("$\pi$", midpoint(AB), NW);
+draw(B--C--D--E--F--G--H--I--J--K--A);
+label("2", midpoint(D--E), S);
+label("2", (6,1), W);
+label("6", midpoint(F--G), S);
+label("4", midpoint(I--J), W);
+label("2", midpoint(K--A), W);
+label("$A$", A, NW);
+label("$B$", B, NW);
+label("$C$", C, NE);
+label("$D$", D, NE);
+label("$E$", E, NE);
+label("$F$", F, SE);
+label("$G$", G, SW);
+label("$H$", H, NW);
+label("$I$", I, NW);
+label("$J$", J, SW);
+label("$K$", K, SW);
+\end{asy}
+\end{center}
+
+\begin{answer}
+$36 - \pi$.
+\end{answer}
+\begin{solution}
+ Draw a rectangle around it! Since a fourth of the circumference of the circle in the upper left is $\frac{1}{4} \cdot 2 \cdot r \cdot \pi = \pi$, where $r$ is the radius of the circle, we see that $r = 2.$
+Therefore, the area of the ``1" shape is $10 \cdot 6 - \frac{1}{4}(2^2\pi) - 8 - 16 = \framebox{$36 - \pi$}$.
+\end{solution}
+
+\item %(Tim Cha*) 
+Saroja, Tim, Daniel, Sara, Ildoo, and Tara are waiting in line to buy tickets to prom. Because Tara rejected Ildoo's proposal to the dance, they refuse to stand next to each other in line. How many ways are there for the six kids to line up such that Tara and Ildoo do not stand next to each other?
+
+\begin{answer}
+480.
+\end{answer}
+\begin{solution}
+ We can find the number of ways the two do not stand together using complementary counting. The number of ways we can rearrange the six kids without restriction is $6!$. The number of ways we can rearrange the six kids such that Ildoo and Tara stand next to each other is $5! \cdot 2$. This is because we can treat Ildoo and Tara as a single unit which would mean there are 5 separate items to rearrange, creating $5!$ ways. We multiply this by 2 because we can switch Tara and Ildoo within the unit. Therefore the number of ways such that Tara and Ildoo do not stand next to each other are $6! – (5! \cdot 2) = 720 – 240 = \framebox{480}$.
+\end{solution}
+
+
+\item %(Alec Zhang*) 
+Bill, Antonio and Hitesh are constructing a metal tube for their HUM project. Hitesh first buys a solid metal cylinder of radius 8 and height 5. Next, Antonio drills a large hole through the middle of the cylinder so that the remaining tube has a thickness of 2 units. Suddenly, Bill swings his sword and slices their tube in half! The result is a semicircular tube, which is shown below. Find the semicircular tube's surface area. Express your answer in terms of $\pi$.
+
+\begin{center}
+\begin{asy}
+import olympiad;
+size(0, 100.5);
+pair A = (0, 0);
+pair B = (2, 0);
+pair C = (14, 0);
+pair D = (16, 0);
+pair E = (16, 5);
+pair F = (14, 5);
+pair G = (2, 5);
+pair H = (0, 5);
+pair I = (8, 0);
+draw(A--B--G--H--cycle);
+draw(C--D--E--F--cycle);
+draw(B{up}..{down}C);
+draw(G{up}..{down}F);
+draw(H{up}..{down}E);
+label("5", midpoint(A--H), W);
+label("2", midpoint(A--B), S);
+label("6", midpoint(I--C), S);
+label("2", midpoint(C--D), S);
+label("5", midpoint(D--E), right);
+draw(I--C, dashed);
+dot(I);
+\end{asy}
+\end{center}
+
+\begin{answer}
+$98\pi + 20$.
+\end{answer}
+\begin{solution}
+ We find the areas of the top and bottom surfaces by subtracting the area of the smaller semicircle from the larger semicircle, and we find that the sum of the top and bottom areas is $2 \cdot \frac{1}{2} \cdot (8^2\pi - 6^2\pi) = 28\pi$. The sum of the areas of the rectangles is $2 \cdot 10 = 20$.
+To find the area of the inner curve, notice that if the inner curve is unraveled, it becomes a rectangle. The height of the rectangle is 5, and the length is  $\frac{1}{2}(2r\pi) = 6\pi$. Thus, the area of the inner curve is $5 \cdot 6\pi = 30\pi$.
+The area of the outer curve can be computed similarly. The height of the rectangle is 5, and the length is $ \frac{1}{2}(2r\pi) = 8\pi$, so the area is $5 \cdot 8\pi = 40\pi$. Therefore the total surface area is $28\pi + 20 + 30\pi + 40\pi = \framebox{$98\pi + 20$}$.
+\end{solution}
+
+\item %(Fatima Gunter-Rahman/Alex Wang*) 
+Martians have two temperature scales, Cahrenheit and Felsius, which are linearly related. Lava boils at 314 Cahrenheit and 100 Felsius, while lava freezes at 272 Cahrenheit and 30 Felsius. Find the temperature such that the value on the Cahrenheit scale is equal to the value on the Felsius scale.
+
+\begin{answer}
+635.
+\end{answer}
+\begin{solution}
+ In order to solve this, we can find a linear relationship between the two scales, as we are given two points $(x, y)$ in the coordinate plane: $(314, 100)$ and $(272, 30)$, if we let $x$ be Cahrenheit and $y$ be Felsius. We can express the line in terms of $y = mx + b$. Thus, $m = \frac{100-30}{314-272} = \frac{70}{42} = \frac{5}{3}$. Using the points, we can solve for $b$, which equals $\frac{-1270}{3}$. Thus, $y = \frac{5}{3}x - \frac{1270}{3}$. Setting $y = x$, we get $x = \frac{5}{3}x - \frac{1270}{3}$, and we get $x = 635$. So at $x = y = \framebox{635}$, the scales match.
+\end{solution}
+
+\item %(Alec Zhang*) 
+Joie has just registered her TJVMT account, and she has aptly made her password ``piejoie". How many distinct ways are there to rearrange the letters in her password such that the vowels `e', `i', `e', `i', and `o' are in that order from left to right? (Note that they do not have to be next to each other in the password; for example, the sequence `peieijo' is a valid sequence.)
+
+\begin{answer}
+42.
+\end{answer}
+\begin{solution}
+ There are 7 letters, so there are 7 ways to pick a space for the letter p and 6 ways to pick a space for the letter j. There is only 1 way to pick spaces for the remaining five letters, so there are $7 \cdot 6 \cdot 1 = \framebox{42}$ ways.
+\end{solution}
+
+\item %(Fatima Gunter-Rahman/Alex Wang*) 
+Find the last digit of $(3^{1000} + 1^{1000} + 4^{1000})^{1000}$.
+
+\begin{answer}
+6.
+\end{answer}
+\begin{solution}
+ We first find the last digits of $3^{1000}, 1^{1000},$ and $4^{1000}$. We note that the last digits of the powers of 3 repeat in the pattern 3, 9, 7, and 1. We also see that the powers of 4 repeat in the pattern 4, 6. Finally, we know that all powers of 1 are equal to 1. Therefore, we see that the units digit of the expression is the units digit of $(1+1+6)^{1000} = 8^{1000}$. We see that the powers of 8 repeat in a pattern of 8, 4, 2, and 6, so we get that the last digit of the expression is \framebox{6}.
+\end{solution}
+
+\item %(Tara Abrishami*) 
+Jessica has five different colors of lipstick, each with its own matching colored purse. She happens to meet Gerard on the street, and drops all of her five purses in excitement. He picks them up for her, and puts the lipsticks back into the purses, but he does all this while staring into Jessica's eyes, paying no attention to matching the colors of lipstick and purse. What is the probability that exactly one of the lipsticks is in the right colored purse? Express your answer as a common fraction.
+
+\begin{answer}
+$\frac{3}{8}$.
+\end{answer}
+\begin{solution}
+ First, we count the number of ways to arrange the lipsticks such that exactly one of the lipsticks is in the right colored purse. There are 5 ways to choose the correctly matched lipstick. There are 3 ways to choose a purse that does not match the second lipstick, and there are 3 ways to choose a purse that does not match the lipstick which matches the second purse. There is only 1 way to arrange the remaining two lipsticks, so there are $5 \cdot 3 \cdot 3 \cdot 1 = 45$ ways to arrange the lipsticks such that exactly one of the lipsticks is in the right colored purse. There are $5! = 120$ total ways to arrange the lipsticks, so the desired probability is $\frac{45}{120} = \framebox{$\frac{3}{8}$}.$
+\end{solution}
+
+\item %(Christopher Morris*) 
+$A$, $B$, $C$, $D$, $E$, $F$, $G$, and $H$ represent distinct digits from 0-9, where $A \neq 0$ and $E \neq 0$. They satisfy the relation below:\\
+\\
+\begin{tabular}{c c c c c}
+    & $A$ & $B$ & $C$ & $D$ \\
+  + & $E$ & $F$ & $G$ & $B$ \\
+  \hline
+  $A$ & $H$ & $C$ & $A$ & $A$\\
+\end{tabular}
+\\
+\\
+Find $B+C+D+G$.
+
+\begin{answer}
+21.
+\end{answer}
+\begin{solution}
+ $A$ must be 1, since it is the only possible value for the ten-thousands place. Looking at the ones place, we have $D+B = 1$ or $D+B = 11$, but $D+B$ cannot be $1$, since $D$ or $B$ would have to be 1, which contradicts the fact that all digits are distinct (since $A$ is already 1.) Since $D+B$ must be 11, $C+G+1$ must equal 11 as well from the tens digits, making $C+G = 10$. Therefore, the sum $B+C+D+G = 11+10 = \framebox{21}.$
+\end{solution}
+
+\item %(Ross Dempsey*) 
+An archery target is divided into concentric rings such that the area between any two consecutive rings is $12\sqrt{17}$. Given that the area of the center ring (or bullseye) is also $12\sqrt{17}$, find the ratio of the radius of the 100th ring to that of the 4th ring.
+
+\begin{answer}
+5.
+\end{answer}
+\begin{solution}
+ The area of the 100th ring is $100 \cdot 12\sqrt{17}$, while the area of the 4th ring is $4 \cdot 12\sqrt{17}$. Since the ratio of the area of the 100th ring to the area of the 4th ring is $100/4 = 25$, the ratio of the radius of the 100th ring to the area of the 4th ring is $\sqrt{25} = \framebox{5}$.
+\end{solution}
+
+\item %(Fatima Gunter-Rahman/Alex Wang*) 
+Joe has a six digit telephone number, such that each digit is distinct. His first two digits are 2 and 5. Each digit afterwards is determined such that every 3 consecutive digits form a multiple of 11. Find Joe's entire 6-digit telephone number.
+
+\begin{answer}
+253968.
+\end{answer}
+\begin{solution}
+ All multiples of 11 have the property that the sum of alternating digits are equivalent mod 11. Using this property we can figure out that the third digit is 3, the next is 9, the next is 6, and the last is 9, giving us a 6-digit telephone number of \framebox{253968}.
+\end{solution}
+
+\item %(Alec Zhang*) 
+Sam starts out on the point $(0, 0)$ on a coordinate grid. If Sam can only move right or up on the coordinate grid and cannot pass through the point $(3, 3)$, how many ways can Sam get to $(7, 7)$?
+
+\begin{answer}
+2032.
+\end{answer}
+\begin{solution}
+ We proceed by complementary counting. To count the number of ways to get to $(7, 7)$, we must go right exactly 7 times and up exactly 7 times, so there are $\binom{14}{7} = 3432$ ways to order the sequence of 7 R's and 7 U's. Now we will count the number of ways to get to $(7, 7)$ while passing through $(3, 3)$. There are $\binom{6}{3}$ ways to get to $(3, 3)$ followed by $\binom{8}{4}$ ways to get to $(7, 7)$, giving $\binom{6}{3} \cdot \binom{8}{4} = 1400$ ways. Thus, there are $3432 - 1400 = \framebox{2032}$ ways to get to $(7, 7)$ without passing through $(3, 3)$.
+\end{solution}
+
+\item %(Robin Park*) 
+Given that $x$ and $y$ are positive integers such that $17x+19y = 401$, find $xy$.
+
+\begin{answer}
+90.
+\end{answer}
+\begin{solution}
+ We notice that $401 - 19y$ must be a multiple of 17, so reducing mod 17 gives $10 - 2y \equiv 0 \pmod{17}$. Thus $y \equiv 5 \pmod{17}$. Since, $y \leq 21$, then $y = 5$. We solve for $x = 18$. So $xy = \framebox{90}$.
+\end{solution}
+
+\item %(Alec Zhang*) 
+Solve for $x$: $(2^x)^3 - 3(2^x)^2 + 3(2^x) - 1 = 0$.
+
+\begin{answer}
+0.
+\end{answer}
+
+\begin{solution}
+ Let $y = 2^x$. Then $y^3 - 3y^2 + 3y - 1 = 0$. This factors as $(y-1)^3 = 0$, so $y = 1$. Since $2^x = 1$, we see that $x = \framebox{0}$.
+\end{solution}
+
+\item %(Alec Zhang*) 
+A big circle $O$ has diameter 52. There are three circles $A$, $B$, and $C$ inside circle $O$ such that circles $A$ and $C$ are internally tangent to $O$; circle $B$ is externally tangent to circles $A$ and $C$, and is between those two circles; and the radii of circles $A$, $B$, $C$, and $O$ are collinear. (See picture below.) Given that the radii $a$, $b$, $c$ of circles $A$, $B$, $C$ form a geometric sequence, and that the radius of circle $B$ is 6, find the area inside circle $O$, but outside circles $A$, $B$, and $C$. Express your answer in terms of $\pi$.
+
+\begin{center}
+\begin{asy}
+size(200);
+import olympiad;
+pair M = (0, 0);
+pair A = (2, 0);
+pair N = (4, 0);
+pair B = (10, 0);
+pair O = (16, 0);
+pair C = (34, 0);
+pair P = (52, 0);
+dot(A);
+dot(B);
+dot(C);
+draw(M--P);
+draw(M{up}..{down}N{down}..{up}M);
+draw(O{up}..{down}N{down}..{up}O);
+draw(O{up}..{down}P{down}..{up}O);
+draw(M{up}..{down}P{down}..{up}M);
+label("$A$", A, S);
+label("$B$", B, S);
+label("$C$", C, S);
+label("6", midpoint(B--O), up);
+\end{asy}
+\end{center}
+
+\begin{answer}
+$312 \pi$.
+\end{answer}
+\begin{solution}
+ The radius of circle $B$ is 6, so the radii of circles $A$ and $C$ can be written as $\frac{6}{r}$ and $6r$, respectively, due to the geometric sequence condition. Since the sum of the diameters of $A$, $B$, and $C$ makes up a diameter of circle $O$, we can write the following equation:
+\begin{equation*}
+2 \cdot \frac{6}{r} + 2(6) + 2(6r) = 52.
+\end{equation*}
+Solving this equation gives us $r = 3, \frac{1}{3}$. This means that our ratio is either 3 or $\frac{1}{3}$, and note that these two ratios just mean either radius of $A$ is smaller, or the radius of $C$ is smaller. However, the problem asks for the area inside circle $O$, but outside circles $A$, $B$, and $C$, so it doesn't matter which ratio we use. Then, without loss of generality, let $a = 2$, $b = 6$, and $c = 18$. The radius of circle $O$ is $52/2 = 26.$
+The area is then $26^2 \pi – 2^2 \pi – 6^2 \pi – 18^2 \pi = \framebox{$312 \pi$}.$
+
+\end{solution}
+
+\item %(Saroja Erabelli*) 
+Find the number of subsets of $\{1, 2, 3, 4, 5, 6, 7, 8\}$ that do NOT contain three consecutive elements.
+
+\begin{answer}
+149.
+\end{answer}
+\begin{solution}
+ Let $f(n)$ denote the number of subsets of $\{1, 2, \ldots, n\}$ such that each does not contain 3 consecutive integers. In our subset of $\{1, 2, \ldots , n\}$, we can either not include 1, include 1 and not include 2, or include both 1 and 2. If we do not include 1, then there are $f(n-1)$ subsets. If we include 1 and do not include 2, then there are $f(n-2)$ subsets. If we include both 1 and 2, then we cannot include 3, so there are $f(n-3)$ subsets. Thus, $f(n) = f(n-1) + f(n-2) + f(n-3)$ for all $n \geq 3$. After we find that $f(0) = 1$, $f(1) = 2$, and $f(2) = 4$, we can easily find $f(3), f(4), \ldots, f(8)$, when we obtain $f(8) = \framebox{149}$.
+\end{solution}
+
+\item %(Haoyuan Sun*) 
+An ant is walking on a triangle. Each second, it will move to an adjacent vertex. What is the probability that it will return to the vertex where it started in five seconds? Express your answer as a common fraction.
+
+\begin{answer}
+$\frac{5}{16}$.
+\end{answer}
+\begin{solution}
+ We can solve this by recursion. Let $a_{n}$ be the chance it is at its starting point after $n$ seconds, and let $b_{n}$ be the chance that it is not. We find the recursive equations $a_{n} = \frac{1}{2}b_{n-1}$ and $b_{n} = a_{n-1} + \frac{1}{2}b_{n-1}$ (alternatively, we can use $b_{n} = 1 - a_{n}$.) We can then recursively obtain $a_{5} = $ \framebox{$\frac{5}{16}$}.
+\end{solution}
+
+\item %(Alec Zhang*) 
+In triangle $ABC$, we have $AB = 20$, $BC = 21$, and $AC = 29$. $M$ is the midpoint of $AC$, and $N$ lies on $BC$ such that $BN = 18$. What is the value of $MN$? Express your answer as a common fraction.
+
+\begin{answer}
+$\frac{25}{2}$.
+\end{answer}
+\begin{solution}
+ First, notice that $ABC$ is a right triangle, so we see that $BM = \frac{29}{2}$. By Stewart's Theorem on triangle $BMC$, we find that $BM^2 \cdot NC + MC^2 \cdot BN = BC \cdot BN \cdot NC + BC \cdot MN^2$. Plugging in values gives $(\frac{29}{2})^2(3 + 18) = 21 \cdot 18 \cdot 3 + 21 \cdot MN^2$. We solve for $MN = \framebox{$\frac{25}{2}$}$.
+\end{solution}
+
+\item %(Saroja Erabelli*) 
+Find the number of ordered triples $(a, b, c)$ of positive integers such that the least common multiple of $a$, $b$, and $c$ is $2014^2$.
+
+\begin{answer}
+6859.
+\end{answer}
+\begin{solution}
+ First, we prime factorize $2014^2 = 2^2 \cdot 19^2 \cdot 53^2$. We see that $a, b,$ and $c$ must be of the form $2^x \cdot 19^y \cdot 53^z$ where $0 \leq x, y, z \leq 2$. But at least one of them must have $x = 2$, at least one of them must have $y = 2$, and at least one of them must have $z = 2$. We proceed by complementary counting. There are $3$ choices for $x$ (0, 1, 2) for each of $a$, $b$, and $c$. Thus there are $3^3 = 27$ total ways to choose $x$ for $a$, $b$, and $c$. If none of $a$, $b$, and $c$ have $x = 2$, then there are $2^3 = 8$ total ways to choose $x$. But since at least one of $a$, $b$, and $c$ has $x = 2$, the total number of ways are $27 - 8 = 19$. Similarly, there are 19 ways to choose $y$ and 19 ways to choose $z$ for $a$, $b$, and $c$, so the total number of ordered triples is $19^3 = \framebox{6859}$.
+\end{solution}
+
+\item %(Alec Zhang*) 
+Compute $\sum\limits_{k=0}^{19}{5k^4 + 10k^3 + 10k^2 + 5k + 1}$.
+
+\begin{answer}
+3200000.
+\end{answer}
+\begin{solution}
+ We rewrite this as $\sum\limits_{k=0}^{19}[(k+1)^5 - k^5] = \sum\limits_{k=1}^{20} (k^5) - \sum\limits_{k=0}^{19} (k^5) = 20^5 + \sum\limits_{k=1}^{19} (k^5) - \sum\limits_{k=1}^{19} (k^5) = \framebox{3200000}$.
+\end{solution}
+
+\end{enumerate}
+
+\end{document}
+

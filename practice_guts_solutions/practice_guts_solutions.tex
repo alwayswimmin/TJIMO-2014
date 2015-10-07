@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Practice Guts Solutions}}
+
+
+\section*{Set 1}
+\begin{enumerate}
+
+\item How many even primes are divisible by 3?
+
+\begin{answer}
+0.
+\end{answer}
+\begin{solution} The only even prime is 2. Since 2 is not divisible by 3, there are $\boxed{0}$ even primes divisible by 3.
+
+\end{solution}
+
+\item Find the sum of the number of edges and number of vertices of a cube.
+
+\begin{answer}
+20.
+\end{answer}
+\begin{solution} There are 12 edges and 8 vertices on a cube. Therefore, the sum is $\boxed{20}$.
+
+\end{solution}
+
+\item Bill flips 4 coins. How many possible outcomes are there? (For example, one outcome is HHTH.)
+
+\begin{answer}
+16.
+\end{answer}
+\begin{solution} Since each flip has 2 possible outcomes, and there are 4 flips, there are $2^4$ = $\boxed{16}$ total outcomes.
+
+\end{solution}
+
+\item Sarah has a string of length 10, and makes a circle out of it. What is the radius of the circle? Express your answer in terms of $\pi$.
+
+\begin{answer}
+$\dfrac{5}{\pi}$.
+\end{answer}
+\begin{solution} The circumference of a circle is $2\pi r$, where $r$ is the radius of the circle. Therefore, the radius is $\dfrac{10}{2\pi} = \boxed{\dfrac{5}{\pi}}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 2}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Find the area of an equilateral triangle with side length 2.
+
+\begin{answer}
+$\sqrt{3}$.
+\end{answer}
+\begin{solution} The length of the base of the triangle is 2. The altitude of the triangle drawn to any side is a 30-60-90 triangle’s leg, and has length $sqrt{3}$. Since the area equals half the product of the base and the height, the desired area is one half the product of its base and height. $\frac{1}{2} 2\sqrt{3} = \boxed{\sqrt{3}}$.
+
+\end{solution}
+
+\item If the function $f(x) = 2x^2 - 1$ and $g(x) = x + 2$, find $f(g(3))$.
+
+\begin{answer}
+49.
+\end{answer}
+\begin{solution} $g(3) = 3 + 2 = 5$, so $f(g(3)) = f(5) = 2 \cdot 5^2 - 1 = \boxed{49}$.
+
+\end{solution}
+
+\item A trapezoid has 2 right angles. Its legs have lengths 4 and 5, and the shorter of the other two sides has length 4. Find its area.
+
+\begin{answer}
+22.
+\end{answer}
+\begin{solution} Let the trapezoid have vertices $ABCD$, with $A$ in the upper left and successive vertices labelled going clockwise. Then, the two right angles must be adjacent, as otherwise $ABCD$ would be a rectangle with equal legs. Without loss of generality, let $A$ and $D$ be right angles, and let $AB$ be the shorter of the parallel sides. Then, $AD = 4$ and $BC = 5$. Let the foot of the altitude from $B$ to $CD$ be $E$. Then $BCE$ is a 3-4-5 right triangle, so $CE = 3$ and $CD = 7$. The area of the trapezoid is $\frac{1}{2} AD (AB + CD) = \boxed{22}$.
+
+\end{solution}
+
+\item Find the probability that when two fair, six-sided dice are rolled, their sum is greater than 9.
+
+\begin{answer}
+$\frac{1}{6}$.
+\end{answer}
+\begin{solution} The probability we are looking forward can be written as the number of ways of getting a 10, 11, or 12 over the number of ways to get any number. The numerator is 6: the dice can be (4, 6), (5, 5), (6, 4), (5, 6), (6, 5), or (6, 6). The denominator is 36, since there are 6 possibilities for the second die for each of the 6 possibilities for the first die, and $6 \cdot 6 = 36$. The answer is thus $\displaystyle \frac{6}{36} = \boxed{\frac{1}{6}}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 3}
+\begin{enumerate}
+\setcounter{enumi}{8}
+
+\item If $\frac{x(D+8)}{2} = 4x + 16$, find the value of $xD$.
+
+\begin{answer}
+32.
+\end{answer}
+\begin{solution} Expanding the left side, we get $\frac{xD + 8x}{2} = 4x + 16$. Multiplying by 2 on both sides gives $xD + 8x = 8x + 32$. Subtracting $8x$ from both sides, we get $xD = \boxed{32}$.
+
+\end{solution}
+
+\item If 10 coins are tossed, what is the probability that there are exactly 7 heads?
+
+\begin{answer}
+$\dfrac{15}{128}$.
+\end{answer}
+\begin{solution} There are $2^{10} = 1024$ total outcomes. There are $\displaystyle  \binom{10}{7} = 120$ outcomes with exactly 7 heads. Therefore, the answer is $\dfrac{120}{1024} = \boxed{\dfrac{15}{128}}$.
+
+\end{solution}
+
+\item Evaluate $1-2+3-4+\dotsb+99-100$.
+
+\begin{answer}
+$-50$.
+\end{answer}
+\begin{solution} Grouping every two terms together, we get 50 terms of $-1$. Therefore, the answer is $50(-1) = \boxed{$-50$}$.
+
+\end{solution}
+
+\item Rabin Karp is trying to find 2 identical strings. He randomly draws strings from a collection of 100 different pairs of strings. How many strings must he draw until he is sure that he has at least one matching pair?
+
+\begin{answer}
+101.
+\end{answer}
+\begin{solution} By the Pigeonhole Principle, if Rabin has 101 strings, then there must be at least one matching pair, so the answer must be at most 101. Since Rabin can have 100 strings without a matching pair, the answer must be greater than 100. Therefore, the answer is $\boxed{101}$.
+\end{solution}
+
+\end{enumerate}
+
+\end{document}

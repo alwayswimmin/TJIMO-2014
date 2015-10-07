@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em}
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Guts}}
+
+\section*{Set 8}
+\begin{enumerate}
+\setcounter{enumi}{28}
+\item Allen starts with the number 0, and wants to get to the number 2014. If on each step, he can either multiply by 3 or add 1, what is the minimum number of steps needed to get to 2014?
+\item Let $S_0, S_1, \cdots, S_8$ be subsets of $\{1,2,3,4,5,6,7,8\}$ such that $S_0 = \varnothing$, and $S_i$ is a proper subset of $S_{i+1}$ (i.e. $S_i \neq S_{i+1}$) for integer $i$ with $0 \leq i \leq 7$. How many possible “chains of subsets” (ways to choose the subsets) are there?
+\item How many distinct (non-degenerate) kinds of tetrahedrons created from 4 distinct vertices of a cube are there? Two tetrahedrons are not considered distinct if one can be turned into the other by reflection and/or rotation.
+\item 
+The \emph{rhombicuboctahedron} is a polyhedron with 8 triangular faces and 12 square faces. Each of its 24 vertices has 3 square faces and 1 triangular face meeting at that vertex. Find the volume of a rhombicuboctahedron of side length 1.
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import three;
+unitsize(1cm);
+size(6cm);
+size3(6cm,6cm,6cm);
+currentprojection=orthographic(5,4,3);
+
+//
+// squares
+//
+draw((1,1,1+sqrt(2))--(1,-1,1+sqrt(2))--(-1,-1,1+sqrt(2))--(-1,1,1+sqrt(2))--cycle);
+
+// draw((1,1,-1-sqrt(2))--(1,-1,-1-sqrt(2))--(-1,-1,-1-sqrt(2))--(-1,1,-1-sqrt(2))--cycle);
+draw((1,-1,-1-sqrt(2))--(-1,-1,-1-sqrt(2))--(-1,1,-1-sqrt(2)),dashed);
+draw((-1,1,-1-sqrt(2))--(1,1,-1-sqrt(2))--(1,-1,-1-sqrt(2)));
+
+draw((1,1+sqrt(2),1)--(1,1+sqrt(2),-1)--(-1,1+sqrt(2),-1)--(-1,1+sqrt(2),1)--cycle);
+
+// draw((1,-1-sqrt(2),1)--(1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),1)--cycle);
+draw((1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),1)--(1,-1-sqrt(2),1),dashed);
+draw((1,-1-sqrt(2),-1)--(1,-1-sqrt(2),1));
+
+draw((1+sqrt(2),1,1)--(1+sqrt(2),1,-1)--(1+sqrt(2),-1,-1)--(1+sqrt(2),-1,1)--cycle);
+draw((-1-sqrt(2),1,1)--(-1-sqrt(2),1,-1)--(-1-sqrt(2),-1,-1)--(-1-sqrt(2),-1,1)--cycle,dashed);
+
+//
+// triangles
+//
+draw((1,1,1+sqrt(2))--(1,1+sqrt(2),1)--(1+sqrt(2),1,1)--cycle);
+draw((-1,1,1+sqrt(2))--(-1,1+sqrt(2),1)--(-1-sqrt(2),1,1)--cycle);
+draw((1,-1,1+sqrt(2))--(1,-1-sqrt(2),1)--(1+sqrt(2),-1,1)--cycle);
+draw((-1,-1,1+sqrt(2))--(-1,-1-sqrt(2),1)--(-1-sqrt(2),-1,1)--cycle,dashed);
+draw((1,1,-1-sqrt(2))--(1,1+sqrt(2),-1)--(1+sqrt(2),1,-1)--cycle);
+
+// draw((-1,1,-1-sqrt(2))--(-1,1+sqrt(2),-1)--(-1-sqrt(2),1,-1)--cycle);
+draw((-1,1+sqrt(2),-1)--(-1-sqrt(2),1,-1)--(-1,1,-1-sqrt(2)),dashed);
+draw((-1,1+sqrt(2),-1)--(-1,1,-1-sqrt(2)));
+
+// draw((1,-1,-1-sqrt(2))--(1,-1-sqrt(2),-1)--(1+sqrt(2),-1,-1)--cycle);
+draw((1,-1,-1-sqrt(2))--(1+sqrt(2),-1,-1)--(1,-1-sqrt(2),-1));
+draw((1,-1,-1-sqrt(2))--(1,-1-sqrt(2),-1),dashed);
+
+draw((-1,-1,-1-sqrt(2))--(-1,-1-sqrt(2),-1)--(-1-sqrt(2),-1,-1)--cycle,dashed);
+
+\end{asy}
+\end{center}
+\end{enumerate}
+
+\eject
+
+\end{document}

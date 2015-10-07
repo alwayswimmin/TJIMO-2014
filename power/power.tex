@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{Time limit: 45 minutes.}
+\newcommand{\righthead}{\fdbox{Round}{Power}}
+
+\newcounter{problem_count}
+
+\section{Prime Mods}
+A \textit{prime} $p$ is defined as a number which has exactly two distinct divisors, 1 and $p$. Prime mods have many unique properties in modular arithmetic.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item Find $x < 5$ such that $2x \equiv 1 \pmod 5$.
+
+\item Find $x < 5$ such that $3x \equiv 1 \pmod 5$.
+
+\item Find $x < 5$ such that $4x \equiv 1 \pmod 5$.
+
+\item For what $a$ can we find an $x$ such that $ax \equiv 1 \pmod{5}$? For what $a$ such that $0 \le a < 5$ does no $x$ exist such that $ax \equiv 1 \pmod{5}$?
+
+\end{enumerate}
+
+\item \addtocounter{problem_count}{1}
+Let $a$ be some nonzero number and $p$ some prime. Let the sets $A$, $B$ be defined as
+\begin{align*}
+A &= \{1, 2, 3,\ldots, p-1\} \\
+B &= \{a, 2a, 3a, \ldots, (p-1)a\}.
+\end{align*}
+\begin{enumerate}
+\item Show that no two elements in $B$ are equivalent modulo $p$. (Hint: Recall from the Practice Power that if a prime $p$ evenly divides $ab$, then $p$ must divide at least one of $a$ or $b$.)
+
+\item How many distinct elements are in $B$ when taken modulo $p$?
+
+\item Show that $A = B$ in modulo $p$. This means $A$ and $B$, in modulo $p$ contain the same elements.
+
+\end{enumerate}
+
+\newcounter{set_problem}
+\addtocounter{set_problem}{\arabic{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+For what $a$ from $\{0, 1, 2, \ldots, p - 1\}$ can we find an $x$ such that $ax \equiv 1 \pmod{p}$ for some prime $p$? Also show that, if we can find such an $x$, the $x$ is unique.
+
+\end{enumerate}
+
+\newcounter{inverse_problem}
+\addtocounter{inverse_problem}{\arabic{problem_count}}
+
+Problem \arabic{inverse_problem} has shown that the integers
+modulo a prime constitute what is known as a \textit{finite field}. Every nonzero value $a$ in the field has a \textit{multiplicative inverse}, or a number $b$ such that $ab \equiv 1$.
+
+\begin{enumerate}
+\addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item Find the smallest positive $n$ such that $2^n \equiv 1 \pmod{3}$.
+
+\item 
+\begin{enumerate}
+\item Find the smallest positive $n$ such that $2^n \equiv 1 \pmod{5}$.
+
+\item Find the smallest positive $n$ such that $3^n \equiv 1 \pmod{5}$.
+
+\item Find the smallest positive $n$ such that $4^n \equiv 1 \pmod{5}$.
+
+\item Find the smallest positive $n$ such that $a^n \equiv 1 \pmod{5}$ for all $a$ not divisible by 5.
+
+\end{enumerate}
+\item
+\begin{enumerate}
+\item For every integer $a$ in the set $\{1,2,3,4,5,6\}$,
+find the smallest positive integer $n$ such that $a^n \equiv 1 \pmod{7}$.
+
+\item Find the smallest positive $n$ such that $a^n \equiv 1 \pmod{11}$ for all $a$ not divisible by 11. Compare this with your result from part (b). What do you notice?
+
+\end{enumerate}
+\end{enumerate}
+
+\end{enumerate}
+
+\section{Fermat's Little Theorem}
+
+Fermat's Little Theorem states that $a^{p-1} \equiv 1 \pmod{p}$ for
+all primes $p$ and all integers $a$ not divisible by $p$. In
+this section you will put together the steps above to prove
+Fermat's Little Theorem.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+Use problem \arabic{set_problem} to show that $(p-1)! \equiv a^{p-1}(p-1)! \pmod{p}$.
+
+\item \addtocounter{problem_count}{1}
+(Fermat.) Show that $a^{p-1} \equiv 1 \pmod{p}$.
+
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item 
+Compute the remainder when $4^{45}$ is divided by 43.
+
+\item  
+Compute the remainder when $5^{1000}$ is divided by 7.
+
+
+\end{enumerate}
+\end{enumerate}
+
+\section{Wilson's Theorem}
+Wilson's Theorem states that $(n - 1)! \equiv -1 \pmod{n}$ if and only if $n$ is prime. In this section you will prove Wilson's Theorem from the steps above.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+Verify Wilson's Theorem is true for $n = 5$ and $n = 6$.
+
+\item \addtocounter{problem_count}{1}
+First prove the only if direction:  $(n - 1)! \not\equiv -1 \pmod{n}$ if $n$ is composite.
+
+\item \addtocounter{problem_count}{1}
+Now let's try the if direction: $(p - 1)! \equiv -1 \pmod{p}$ for all primes $p$. First we'll split cases where $p$ is odd and $p$ is even. Prove Wilson's Theorem for all even primes $p$.
+
+\end{enumerate}
+
+Recall from problem \arabic{inverse_problem} we know every integer from $\{1, 2, \ldots, p - 1\}$ has a unique multiplicative inverse modulo prime $p$. That means for a number $a$ in $\{1, 2, \ldots, p - 1\}$, there exists exactly one number $b$ also in $\{1, 2, \ldots, p - 1\}$ such that $ab \equiv 1 \pmod{p}$.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item Find the multiplicative inverses of 1 and $p - 1$ modulo $p$.
+
+\item Split the numbers $\{ 2, 3, 4, 5, 6, 7, 8, 9\}$ into four pairs, where each pair of numbers consists of multiplicative inverses modulo 11.
+
+\item Show that the numbers from $\{ 2, 3, \ldots, p - 2\}$ can be split into pairs where each pair consists of multiplicative inverses modulo $p$, where $p$ is an odd prime.
+
+\end{enumerate}
+
+\item \addtocounter{problem_count}{1}
+Show that $(p - 1)! \equiv -1 \pmod{p}$ for odd primes $p$.
+
+\end{enumerate}
+
+\end{document}
+

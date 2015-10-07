@@ -1,0 +1,600 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{}
+\newcommand{\righthead}{\fdbox{Round}{Guts Solutions}}
+
+
+\section*{Set 1}
+\begin{enumerate}
+\setcounter{enumi}{0}
+
+\item How many integers $x$ are there such that $\left| 3x - 13 \right| < 14$?
+
+\begin{answer}
+9.
+\end{answer}
+\begin{solution} $\left| 3x - 13 \right| < 14$ means that the difference between $3x$ and 13 is less than 14, so $-1 < 3x < 27$. This means $-\frac{1}{3} < x < 9$, which means the only integers $x$ can be are $0, 1, \cdots 8$, \boxed{9} total values.
+
+\end{solution}
+
+\item Let $H$ be a regular hexagon of area $\sqrt{3}$ and $S$ be a square of area 1. Find the ratio of the perimeter of $H$ to the perimeter of $S$.
+
+\begin{answer}
+$\frac{\sqrt{6}}{2}$.
+\end{answer}
+\begin{solution} Let the side length of $H$ be $x$. Then, since $H$ is made up of 6 equilateral triangles, the area of $H$ is $\displaystyle 6 \frac{x^2 \sqrt{3}}{4} = 1$, and $\displaystyle x = \sqrt{\frac{2}{3}}$. The perimeter of $H$ is $6x = 2\sqrt{6}$. The side length of $S$ is 1, so the perimeter of $S$ is 4. The ratio $\frac{2\sqrt{6}}{4} = \boxed{\frac{\sqrt{6}}{2}}$.
+
+\end{solution}
+
+\item How many prime numbers are there between 40 and 80?
+
+\begin{answer}
+10.
+\end{answer}
+\begin{solution} A number $n$ is prime if no primes less than or equal to $\sqrt{n}$ divide $n$. Checking numbers between 40 and 80, we find 41, 43, 47, 53, 59, 61, 67, 71, 73, and 79 are prime. Thus, there are \boxed{10} primes between 40 and 80.
+
+\end{solution}
+
+\item Timely, Charming Timberman/Chopper Timothy Chachacha is currently at the origin (0, 0) and trying to get to a forest at (4, 4). If he can only move either up one unit or right one unit at a time, in how many ways can Timothy get to the forest?
+
+\begin{answer}
+70.
+\end{answer}
+\begin{solution} Timothy's path can be represented as a sequence of 4 $U$'s and 4 $R$'s, with a $U$ representing moving up and $R$ representing moving right. For example, $RRRRUUUU$ would represent moving all the way right to (4, 0), then all the way up to (4, 4). The number of paths Timothy can take is just the number of possible sequences. Choosing 4 places among the 8 for 4 $U$'s means that $R$'s can only take the 4 remaining places, so the number of paths equals the number of ways to choose 4 places out of 8, $\displaystyle \binom{8}{4} = \boxed{70}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 2}
+\begin{enumerate}
+\setcounter{enumi}{4}
+
+\item An unfair coin can land on heads, tails, or its edge. If the probability that the coin doesn’t land on heads is $\frac{2}{3}$, and the probability that the coin doesn’t land on tails is $\frac{1}{2}$, what is the probability of the coin landing on its edge?
+
+\begin{answer}
+$\frac{1}{6}$.
+\end{answer}
+\begin{solution} Let the probability the coin lands on heads be $h$, on tails be $t$, and on the edge be $e$. Then $h+t+e = 1$, since the coin must land on either heads, tails, or the edge. The probability the coin doesn't land on heads is $1-h = t+e = \frac{2}{3}$, and the probability the coin doesn't land on tails is $1-t = h+e = \frac{1}{2}$. Then adding these up, we get $t+e+h+e = 1+e = \frac{7}{6}$, so $e = \boxed{\frac{1}{6}}$.
+
+\end{solution}
+
+\item How many different ways are there to order the numbers $\{1,2,3,4,5\}$? For example, $\{3,2,5,4,1\}$ is one valid ordering.
+
+\begin{answer}
+120.
+\end{answer}
+\begin{solution} There are $5\times4\times3\times2\times1 = 5! = 120$ ways of arranging 5 distinct objects. Therefore, the answer is $\boxed{120}$.
+
+\end{solution}
+
+\item Alice, Bob, Charlie, and Dave agree on two integers $x$ and $y$, and state the following equations. % x = 3, y = 7
+\begin{description}
+\item[Alice] $x + y = 10$
+\item[Bob] $x^y = 256$
+\item[Charlie] $xy = 21$
+\item[Dave] $x^2 + y^2 = 58$
+\end{description}
+If exactly one of them is lying, who is the liar?
+
+\begin{answer}
+Bob.
+\end{answer}
+\begin{solution} Looking at Alice and Bob, we find that $x = 2$ and $y = 8$. Looking at Alice and Charlie, we find that $x = 3$ and $y = 7$. Since there is a contradiction, one of the first three must be lying. Therefore, Dave is telling the truth. Looking at Dave, we find that only $x = 3$ and $y = 7$ works, so $\boxed{\textrm{Bob}}$ must be lying.
+
+\end{solution}
+
+\item Equilateral triangles are inscribed and circumscribed around a circle. Find the ratio between the area of the smaller triangle to the area of the larger triangle.
+
+\begin{answer}
+$\dfrac{1}{4}$.
+\end{answer}
+\begin{solution}
+Let the radius of the circle be $r$. Then using the 30-60-90 right triangles, we get $r\sqrt{3}$ as the side length of the smaller triangle, and $2r\sqrt{3}$ as the side length of the larger triangle. Since the ratio of the lengths is $\dfrac{1}{2}$, the ratio of the areas is $\dfrac{1^2}{2^2} = \boxed{\dfrac{1}{4}}$.
+
+Alternatively, we can rotate the triangles around the circle to get the following diagram:
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+unitsize(1cm);
+
+draw(Circle((0,0),1));
+draw((-sqrt(3),-1)--(sqrt(3),-1)--(0,2)--cycle);
+draw((0,-1)--(sqrt(3)/2,1/2)--(-sqrt(3)/2,1/2)--cycle);
+
+\end{asy}
+\end{center}
+From the diagram, we can see that the larger triangle is composed of 4 smaller triangles.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 3}
+\begin{enumerate}
+\setcounter{enumi}{8}
+
+\item Two numbers are said to be \emph{relatively prime} is their only common factor is 1. How many postive integers less than 100 are relatively prime to 96? %Katherine Cheng
+
+\begin{answer}
+33.
+\end{answer}
+\begin{solution} Since the only primes that divide 96 are 2 and 3, a number is not relatively prime to 96 if and only if it contains a factor of 2 or 3. Of the 99 positive integers less than 100, 49 are divisible by 2 and 33 divisible by 3. However, the number of numbers divisible by neither 2 nor 3 is greater than $99 - 49 - 33 = 17$, since the 16 numbers divisible by 6 are counted in both the 49 divisible by 2 and the 33 divisible by 2. Adding this back in, $17 + 16 = \boxed{33}$.
+
+\end{solution}
+
+\item Jason is thirsty, so he is randomly choosing drinks from a cooler containing 100 lemonades, 100 love potions, and 100 water bottles. If he wants to make sure he has either at least 5 lemonades, at least 25 love potions, or at least 12 water bottles, what is the minimum number of drinks that Jason must randomly pull out from the cooler?
+
+\begin{answer}
+40.
+\end{answer}
+\begin{solution} It is possible for Jason to have pulled out 39 drinks without being satisfied, as he could have pulled out 4 lemonades, 24 love potions, and 11 water bottles. However, the Strong Pigeonhole Principle shows that picking one more would guarantee that at least one of Jason's criteria is satisfied. $39 + 1 = \boxed{40}$.
+
+\end{solution}
+
+\item There are two real numbers such that the square of their sum is 612 and the square of their difference is 272. Find their product.
+
+\begin{answer}
+85.
+\end{answer}
+\begin{solution} Let the numbers be $x$ and $y$. Then, $612 = (x+y)^2 = x^2 + y^2 + 2xy$ and $272 = (x - y)^2 = x^2 + y^2 - 2xy$. Subtracting these two equations, $340 = 4xy$ and $xy = \boxed{85}$.
+
+\end{solution}
+
+\item What is the ratio of the area of a regular hexagon of side length 4 to the area of an equilateral triangle with side length 1? %Harry Han
+
+\begin{answer}
+96.
+\end{answer}
+\begin{solution} A regular hexagon with side length $x$ is made up of 6 equilateral triangles also of side length $x$, so a regular hexagon has six times the area of an equilateral triangle with the same length. However, this must be scaled by the side length ratio squared, $4^2 =16$ (imagine a square—a square with twice its side length has four times its area). $6 * 16 = \boxed{96}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 4}
+\begin{enumerate}
+\setcounter{enumi}{12}
+
+\item Find the positive difference between the sum of the first 1000 odd positive integers and the sum of the first 1000 even positive integers.
+
+\begin{answer}
+1000.
+\end{answer}
+\begin{solution} If we pair up every odd number with every even number, we see that every even number is 1 greater than its corresponding odd number. Therefore, the total difference is $1000(1) = \boxed{1000}$.
+
+\end{solution}
+
+\item Kevin starts with the number 1000. Every second, he can either divide the number by 2 (rounding down), or subtract 10. What is the minimum number of seconds it takes to get the number below 0?
+
+\begin{answer}
+8.
+\end{answer}
+\begin{solution} If we get a number below 19, we should subtract 10 instead of dividing by 2, as dividing by 2 only reduces it by a number less than 10. Otherwise, we can keep dividing by 2. The sequence is $1000,500,250,125,62,31,15,5,-5$, a total of $\boxed{8}$ seconds.
+
+\end{solution}
+
+\item Find the number of triangles created from three vertices of a cube that are not on a face of the cube.
+
+\begin{answer}
+32.
+\end{answer}
+\begin{solution} Since no three vertices of a cube are colinear, any 3 distinct vertices we choose makes a triangle. There are $\displaystyle \binom{8}{3} = 56$ total triangles. Looking at one face, there are $\displaystyle \binom{4}{3} = 4$ triangles lying on that face. Since there are 6 faces, there are $6(4) = 24$ triangles lying on a face. Subtracting, we get $56 - 24 = \boxed{32}$ triangles.
+
+\end{solution}
+
+\item If $(22)(34) = 718$ in base $b$, find $b$.
+
+\begin{answer}
+13.
+\end{answer}
+\begin{solution} If we convert everything to base 10, we get $(2b+2)(3b+4) = 7b^2+b+8$. Expanding and moving everything to one side, we get $b^2 - 13b = 0$. This has solutions $0$ and $13$. The only solution that makes sense is $\boxed{13}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 5}
+\begin{enumerate}
+\setcounter{enumi}{16}
+
+\item If $\log_{16}(x^2) + (\log_{16}{x})^2 = -1$, find the value of $x$.
+
+\begin{answer}
+$\frac{1}{16}$.
+\end{answer}
+\begin{solution} Let $y = \log_{16}{x}$. Recognizing that $\log_{16}{(x^2)} = 2 \log_{16}{x} = 2y$, we can write the given equation as $2y + y^2 = -1$, whose only solution is $-1 = y = \log_{16}{x}$. Taking 16 to the power of the equation, $x = \boxed{\frac{1}{16}}$.
+
+\end{solution}
+
+\item If $a$ and $b$ are positive integers, $ab = 2500$, and $\gcd(a,b) = 10$, find the largest possible value of $a$.
+
+\begin{answer}
+250.
+\end{answer}
+\begin{solution} Since both $a$ and $b$ must contain a factor of 10, we can write $a = 10x$ and $b = 10y$ for positive integers $x$, $y$. Then, $xy = 25$. The maximum $x$ can be is 25, so the maximum $a$ can be is 250. Checking that $(a, b) = (250, 10)$ satisfies the conditions, the maximum $a$ is \boxed{250}.
+
+\end{solution}
+
+\item Three circles $A$, $B$, and $C$ are mutually externally tangent (each pair of them only shares one point in common). If the radii of the three circles are 6, 7, and 8, find the area of triangle $ABC$.
+
+\begin{answer}
+84.
+\end{answer}
+\begin{solution} By adding pairs of the radii of the circles, the sides of $ABC$ have length 13, 14, and 15. Without loss of generality, let $AB = 13$, $AC = 14$, $BC = 15$. Drawing an altitude from $A$ to point $D$ on $BC$, applying the Pythagorean Theorem and solving a system of two equations shows that $AD = 12$. The area of the triangle is therefore $\frac{1}{2} AD \cdot BC = \boxed{84}$.
+
+\end{solution}
+
+\item Pok\'{e}Farmer Kevy is raising a Pok\'{e}mon population of two-legged Mienshao and four-legged Bulbasaur. During breeding season, however, Kevy lost track of how many Pok\'{e}mon he had. However, counting their footprints, he determined that his Pok\'{e}mon had 148 legs among them. Help Kevy determine the difference between the minimum and maximum number of Pok\'{e}mon he could have.
+
+\begin{answer}
+37.
+\end{answer}
+\begin{solution} Let $x$ be the number of Mienshao and $y$ the number of Bulbasaur. We know that $2x + 4y = 148$, or $x + 2y = 74$. Clearly, the more Mienshao Kevy has, the more Pokemon he will have for each leg of a Pok\'{e}mon, meaning he has more Mienshao overall; conversely, the fewer Mienshao Kevy has, the fewer Pok\'{e}mon he has. Kevy has at most 74 Mienshao and at least 0, meaning he has at least 0 Bulbasaur and at most 37 Bulbasaur. Thus, the answer is $74 - 37 = \boxed{37}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 6}
+\begin{enumerate}
+\setcounter{enumi}{20}
+
+\item A 100-sided die (yes, they exist) is weighted so that the probability of rolling at most $n$ is proportional to $n$. Find the probability of rolling a 42.
+
+\begin{answer}
+$\dfrac{1}{100}$.
+\end{answer}
+\begin{solution} The probability of rolling $n$ is the probability of rolling at most $n$ minus the probability of rolling at least $n-1$. Since the probability of rolling at least $n$ is $kn$, for some constant $k$, this probability is $kn - k(n-1) = k$, so there is an equal chance of rolling each number. Therefore, the probabilty of rolling a 42 is $\boxed{\dfrac{1}{100}}$.
+
+\end{solution}
+
+\item If I receive $1 + 2 + \cdots + n$ gifts on the $n$th day of Christmas, how many total gifts do I have by the end of the 12th day of Christmas? (For example, I have $1+(1+2)=4$ gifts at the end of the second day.) % May need to be changed
+
+\begin{answer}
+364.
+\end{answer}
+\begin{solution} We sum the first 12 triangular numbers. The $n$th triangular number is $1 + 2 + \cdots + n = \dfrac{n(n+1)}{2}$. Therefore, the answer is $1+3+6+10+15+21+28+36+45+55+66+78 = \boxed{364}$.\\
+Alternatively, we have 12 1's, 11 2's, and so on, giving $12(1) + 11(2) + 10(3) + \cdots + 1(12)$.\\
+Alternatively, this is the 12th tetrahedral number, whose general formula is given by $\dfrac{n(n+1)(n+2)}{6}$.
+
+\end{solution}
+
+\item Find the volume of a 10-cube (a cube in 10 dimensions) with side length 2. \\
+Hint: Look at the lower dimension cubes first (1-cube = line, 2-cube = square, 3-cube = cube).
+
+\begin{answer}
+1024.
+\end{answer}
+\begin{solution} Looking at the lower dimension cubes, we find that the "volume" (length) of a line with side length 2 is $2^1$, the "volume" (area) of a square with side length 2 is $2^2$, and the volume of a cube is $2^3$. Continuing this pattern, we find that the volume of a 10-cube with side length 2 is $2^{10} = \boxed{1024}$. (We can rationalize this by seeing that if we add another dimension, the volume needs to be multiplied by the side length in the new dimension.)
+
+\end{solution}
+
+\item A certain strip of paper can be twisted and folded into a M\"{o}bius strip (connected at the dotted line near the 1 in the diagram) that resembles a regular hexagon when flattened (see diagram). If the width of the strip is 1, what is the length of the strip?
+
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+unitsize(2cm);
+
+draw((1,0)--(1/2,-sqrt(3)/2)--(-1/2,-sqrt(3)/2)--(-1,0)--(-1/2,sqrt(3)/2)--(1/2,sqrt(3)/2)--cycle);
+draw((-1,0)--(1,0));
+draw((-1/2,sqrt(3)/2)--(1/2,-sqrt(3)/2),dashed);
+draw((-1/2,-sqrt(3)/2)--(0,0),dashed);
+draw((0,0)--(1/2,sqrt(3)/2));
+draw(L=Label("1",align=E,position=0.7),(0,0)--(0,-sqrt(3)/2),linetype("2 4"));
+
+\end{asy}
+\end{center}
+
+\begin{answer}
+$3\sqrt{3}$.
+\end{answer}
+\begin{solution} Tracing one edge along the strip, we get the length $\boxed{3\sqrt{3}}$.
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+unitsize(2cm);
+
+draw((-1/2,sqrt(3)/2)--(1/2,sqrt(3)/2)--(1,0)--(1/2,-sqrt(3)/2));
+draw((0,-sqrt(3)/2)--(-1/2,-sqrt(3)/2)--(-1,0));
+draw((1/2,-sqrt(3)/2)--(0,-sqrt(3)/2),linewidth(2));
+draw((-1/2,sqrt(3)/2)--(-1,0),linewidth(2));
+draw((0,0)--(1,0));
+draw((-1,0)--(0,0),linewidth(2));
+draw((-1/2,sqrt(3)/2)--(1/2,-sqrt(3)/2),dashed+linewidth(2));
+draw((-1/2,-sqrt(3)/2)--(0,0),dashed);
+draw((0,0)--(1/2,sqrt(3)/2));
+draw(L=Label("1",align=E,position=0.7),(0,0)--(0,-sqrt(3)/2),linetype("2 4"));
+
+\end{asy}
+\end{center}
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 7}
+\begin{enumerate}
+\setcounter{enumi}{24}
+
+\item A pizza of radius 6 inches is made. If $\frac{2}{3}$ of it is covered with chicken and $\frac{1}{2}$ is covered with mushrooms, what is the maximum possible area on the pizza that is only covered by chicken? Note that any area on the pizza may be covered by one topping, both, or neither. Express your answer in terms of $\pi$.
+
+\begin{answer}
+$18 \pi$.
+\end{answer}
+\begin{solution} In order to maximize the area covered only by chicken, we consider the fraction of the area of covered only in mushrooms, $m$. This ranges from 0 (when mushrooms always overlap with chicken) to $\frac{1}{3}$ (when mushrooms cover all the non-chicken-covered space on the pizza). The fraction of the area covered by only chicken, $c$, equals the total coverage of chicken minus the area covered by mushroom and chicken, or $\frac{2}{3} - (\frac{1}{2} - m) = \frac{1}{6} + m$. $c$ is maximized at $\frac{1}{2}$ when $m = \frac{1}{3}$. The area, therefore, is $c \cdot 6^2 \pi = \boxed{18 \pi}$.
+
+\end{solution}
+
+\item Find the sum of all whole numbers less than 100 that have a remainder of 1 when divided by 2, a remainder of 2 when divided by 3, and a remainder of 4 when divided by 5.
+
+\begin{answer}
+177.
+\end{answer}
+\begin{solution} The problem is equivalent to finding all $x \equiv -1 \pmod{2} \equiv -1 \pmod{3} \equiv -1 \pmod{5}$, which is satisfied by $x \equiv -1 \pmod{2 \cdot 3 \cdot 5} \equiv 29 \pmod{30}$. By the Chinese Remainder Theorem, this is the only solution $\mod{30}$. The numbers less than 100 congruent to 29 $\pmod{30}$ are 29, 59, and 89. $29 + 59 + 89 = \boxed{177}$.
+
+\end{solution}
+
+\item Whenever Low calls his friend High, they always begin their conversation with ``Hi, High" and ``Yo, Low." Let $N$ be the number of ways to arrange the letters in ``HIHIGHYOLOW". Find the last 3 digits of $N$.
+
+\begin{answer}
+200.
+\end{answer}
+\begin{solution} There are 11 letters total, whose repetitions only include 3 $H$'s, 2 $I$'s, and 2 $O$'s. Thus, $N = \frac{11!}{3! 2! 2}$, as simply arranging the 11 letters treats each letter as distinct, requiring division by factorials to compensate. $N$ contains exactly two powers of 10 and so will end in exactly 2 zeroes. The third-to-last digit is that of 
+\begin{align*}
+N &= \frac{11 \cdot 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2}{6 \cdot 2 \cdot 2 \cdot 100} \\
+&= 11 \cdot 9 \cdot 7 \cdot 4 \cdot 3 \cdot 2
+\end{align*}
+whose last digit is 2. Thus the last three digits are $\boxed{200}$.
+
+\end{solution}
+
+\item Let $S$ be the set $\{1, 2, 3,\ldots, 30\}$ and $N$ be the number of subsets $s$ of $S$ such that the sum of the elements in $s$ is greater than 232. Find the number of factors of $N$. % William Sun
+
+\begin{answer}
+30.
+\end{answer}
+\begin{solution} First, note that sum of all elements ofs $S$ is $\frac{30(31)}{2} = 465$. Call a subset \emph{small} if the sum of its elements is 232 or less, and \emph{large} if the sum of its elements is greater than 232. Note that every subset of $S$ is either small or large. For each small subset $a$ whose elements have sum $x$, $x \leq 232$ by definition of small. Then, the set of elements in $S$ but not in $a$ will have element sum $y = 465 - x > 232$. Thus, for each small subset there is a large subset, and similarly, we can show that for each large subset there is a small subset. This means that the number of small sets equals the number of large sets. As there are $2^{30}$ subsets of $S$ in total, the number of large subsets is just $N =\frac{1}{2} 2^{30} = 2^{29}$, which means $N$ has \boxed{30} factors.
+
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 8}
+\begin{enumerate}
+\setcounter{enumi}{28}
+
+\item Allen starts with the number 0, and wants to get to the number 2014. If on each step, he can either multiply by 3 or add 1, what is the minimum number of steps needed to get to 2014?
+
+\begin{answer}
+16.
+\end{answer}
+\begin{solution} Expressing 2014 in ternary gives $2202121_3$. Multiplying by 3 is equivalent to adding on a 0 at the end (or shifting it over one digit), while adding 1 adds 1 to the last digit. Therefore, we can build up the number digit by digit. We need 6 multiplications by 3, and 10 additions by 1, giving a total of $\boxed{16}$ steps.
+
+\end{solution}
+
+\item Let $S_0, S_1, \cdots, S_8$ be subsets of $\{1,2,3,4,5,6,7,8\}$ such that $S_0 = \varnothing$, and $S_i$ is a proper subset of $S_{i+1}$ (i.e. $S_i \neq S_{i+1}$) for integer $i$ with $0 \leq i \leq 7$. How many possible “chains of subsets” (ways to choose the subsets) are there?
+
+\begin{answer}
+40320.
+\end{answer}
+\begin{solution} Note that since there are 9 sets and only 8 elements in the original set, $S_n$ must have exactly $n$ elements. Choosing the subsets is equivalent to choosing an arrangement of the elements of $\{1,2,3,4,5,6,7,8\}$, as we add one element each time. Therefore, there are $8! = \boxed{40320}$ possible "chains of subsets".
+
+\end{solution}
+
+\item How many distinct (non-degenerate) kinds of tetrahedrons created from 4 distinct vertices of a cube are there? Two tetrahedrons are not considered distinct if one can be turned into the other by reflection and/or rotation.
+
+\begin{answer}
+4.
+\end{answer}
+\begin{solution} We split this into 2 cases.
+\subsubsection*{Case 1: Three points lie on the same face}
+Then the fourth point cannot lie on the same face, as that creates a square (a degenerate tetrahedron). Therefore, the fourth point must lie on the opposite face. This gives 3 distinct tetrahedrons, as two points give nondistinct tetrahedrons.
+
+\subsubsection*{Case 2: No three points lie on the same face}
+Then two points must lie on the same face. Those two points can't be adjacent, as otherwise, the other two points must lie on the opposite edge since they cannot be adjacent to the two points, giving a square (a degenerate tetrahedron). Therefore, the two points must be opposite each other on the face. Similarity, the other two points can't be adjacent to each other and those two points, giving a regular tetrahedron.
+
+Therefore, there are $\boxed{4}$ distinct tetrahedrons.
+\end{solution}
+
+\item The \emph{rhombicuboctahedron} is a polyhedron with 8 triangular faces and 12 square faces. Each of its 24 vertices has 3 square faces and 1 triangular face meeting at that vertex. Find the volume of a rhombicuboctahedron of side length 1.
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import three;
+unitsize(1cm);
+size(6cm);
+size3(6cm,6cm,6cm);
+currentprojection=orthographic(5,4,3);
+
+//
+// squares
+//
+draw((1,1,1+sqrt(2))--(1,-1,1+sqrt(2))--(-1,-1,1+sqrt(2))--(-1,1,1+sqrt(2))--cycle);
+
+// draw((1,1,-1-sqrt(2))--(1,-1,-1-sqrt(2))--(-1,-1,-1-sqrt(2))--(-1,1,-1-sqrt(2))--cycle);
+draw((1,-1,-1-sqrt(2))--(-1,-1,-1-sqrt(2))--(-1,1,-1-sqrt(2)),dashed);
+draw((-1,1,-1-sqrt(2))--(1,1,-1-sqrt(2))--(1,-1,-1-sqrt(2)));
+
+draw((1,1+sqrt(2),1)--(1,1+sqrt(2),-1)--(-1,1+sqrt(2),-1)--(-1,1+sqrt(2),1)--cycle);
+
+// draw((1,-1-sqrt(2),1)--(1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),1)--cycle);
+draw((1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),-1)--(-1,-1-sqrt(2),1)--(1,-1-sqrt(2),1),dashed);
+draw((1,-1-sqrt(2),-1)--(1,-1-sqrt(2),1));
+
+draw((1+sqrt(2),1,1)--(1+sqrt(2),1,-1)--(1+sqrt(2),-1,-1)--(1+sqrt(2),-1,1)--cycle);
+draw((-1-sqrt(2),1,1)--(-1-sqrt(2),1,-1)--(-1-sqrt(2),-1,-1)--(-1-sqrt(2),-1,1)--cycle,dashed);
+
+//
+// triangles
+//
+draw((1,1,1+sqrt(2))--(1,1+sqrt(2),1)--(1+sqrt(2),1,1)--cycle);
+draw((-1,1,1+sqrt(2))--(-1,1+sqrt(2),1)--(-1-sqrt(2),1,1)--cycle);
+draw((1,-1,1+sqrt(2))--(1,-1-sqrt(2),1)--(1+sqrt(2),-1,1)--cycle);
+draw((-1,-1,1+sqrt(2))--(-1,-1-sqrt(2),1)--(-1-sqrt(2),-1,1)--cycle,dashed);
+draw((1,1,-1-sqrt(2))--(1,1+sqrt(2),-1)--(1+sqrt(2),1,-1)--cycle);
+
+// draw((-1,1,-1-sqrt(2))--(-1,1+sqrt(2),-1)--(-1-sqrt(2),1,-1)--cycle);
+draw((-1,1+sqrt(2),-1)--(-1-sqrt(2),1,-1)--(-1,1,-1-sqrt(2)),dashed);
+draw((-1,1+sqrt(2),-1)--(-1,1,-1-sqrt(2)));
+
+// draw((1,-1,-1-sqrt(2))--(1,-1-sqrt(2),-1)--(1+sqrt(2),-1,-1)--cycle);
+draw((1,-1,-1-sqrt(2))--(1+sqrt(2),-1,-1)--(1,-1-sqrt(2),-1));
+draw((1,-1,-1-sqrt(2))--(1,-1-sqrt(2),-1),dashed);
+
+draw((-1,-1,-1-sqrt(2))--(-1,-1-sqrt(2),-1)--(-1-sqrt(2),-1,-1)--cycle,dashed);
+
+\end{asy}
+\end{center}
+
+\begin{answer}
+$4 + \dfrac{10\sqrt{2}}{3}$.
+\end{answer}
+\begin{solution} We can cut up the rhombicuboctahedron into 8 triangular pyramids (from the "corners"), 12 triangular prisms (from the "edges"), 6 rectangular prisms (from the "faces"), and 1 cube (from the center). The volume of a triangular pyramid is $\dfrac{1}{3}\left(\dfrac{1}{4}\right)\left(\dfrac{\sqrt{2}}{2}\right) = \dfrac{\sqrt{2}}{24}$. The volume of a triangular prism is $\dfrac{1}{4}\left(1\right) = \dfrac{1}{4}$. The volume of a rectangular prism is $1\left(\dfrac{\sqrt{2}}{2}\right) = \dfrac{\sqrt{2}}{2}$. The volume of the cube is $1^3 = 1$. Therefore, the total volume is $8\left(\dfrac{\sqrt{2}}{24}\right) + 12\left(\dfrac{1}{4}\right) + 6\left(\dfrac{\sqrt{2}}{2}\right) + 1(1) = \boxed{4 + \dfrac{10\sqrt{2}}{3}}$.
+\end{solution}
+
+\end{enumerate}
+
+\section*{Set 9}
+\begin{enumerate}
+\setcounter{enumi}{32}
+
+\item Mildew Dim and his archrival, Grizzly Absky, are fighting for the heart of their mutual love in a game of Prussian Poulet. Each turn, players alternate eating a piece of chicken, which has a $\frac{1}{5}$ chance being poisoned, thus killing the player. If Mildew goes first, what is the probability that he will not be poisoned before Grizzly?
+
+\begin{answer}
+$\frac{4}{9}$.
+\end{answer}
+\begin{solution} The probability that Grizzly is poisoned on the second turn is the probability that Mildoo is not poisoned times the probability that Grizzly is, which is $\frac{4}{5} \frac{1}{5}$. The probability that Grizzly is poisoned on the fourth turn is the probability that the past three turns resulted in no poisoning but that the fourth turn does, $(\frac{4}{5})^3 \frac{1}{5}$. This pattern continues, as the probability that Grizzly is poisoned on the $2n$th terms the probability that the previous $2n - 1$ turns resulted in no poisoning times the probability that Grizzly is poisoned on the $n$th term, $(\frac{4}{5})^{2n - 1} \frac{1}{5}$. Adding all these probabilities together is the sum of an infinite geometric term with first term $\frac{4}{5} \frac{1}{5} = \frac{4}{25}$ and ratio $(\frac{4}{5})^2 = \frac {16}{25}$. The sum is $\displaystyle \frac{\frac{4}{25}}{1 - \frac{16}{25}} = \boxed{\frac{4}{9}}$.
+
+\end{solution}
+
+\item Find the sum of all $x$ such that $2014x^3 - 4513x^2 + 991x - 42 = 0$.
+
+\begin{answer}
+$\frac{4513}{2014}$.
+\end{answer}
+\begin{solution} Using Vieta's Formulas, the sum of the roots of this polynomial is $\boxed{\frac{4513}{2014}}$.
+
+\end{solution}
+
+\item Compute the number of positive integers $n$ such that $10n + 1$ divides $2014n + 47,530$.
+
+\begin{answer}
+7.
+\end{answer}
+\begin{solution} The problem statement is equivalent to $10n + 1 | 2014n + 47,530$, where the vertical bar indicates divisibity. Then, $10n + 1$ must divide $2014n + 47,530 - 201(10n + 1) = 4n + 47,329$, and also $10(4n + 47,329) = 40n + 473,290$. Subtracting out $40n + 4$, $10n + 1 | 473,286$. Prime factoring 473,268 shows that it equals $2 \cdot 3 \cdot 11 \cdot 71 \cdot 101$. The factors that have a remainder of 1 when divided by 10 are 11, 71, 101, $11 \cdot 71$, $11 \cdot 101$, $71 \cdot 101$, and $11 \cdot 71 \cdot 101$. Because all these can be written as $10n + 1$ for positive integer $n$, there are \boxed{7} possible $n$.
+
+\end{solution}
+
+\item A regular pentagon has area 1. When all its diagonals are drawn, a smaller regular pentagon is outlined within the original pentagon. Find the area of the smaller pentagon.
+
+\begin{answer}
+$\displaystyle \frac{7-3\sqrt{5}}{2}$
+\end{answer}
+\begin{solution}
+Since all regular pentagons are similar, consider a simpler case where pentagon $ABCDE$ has side length 1. $AD \parallel BC$, so $\angle IHA = \angle IBC$ and $\angle IAH = \angle ICB$, meaning $\triangle IHA \sim \triangle IBC$. Note that these triangles ($\triangle IHA$, $\triangle IBC$) are isosceles. $AH = AI = BJ$; let this length be denoted by $y$. Let $x = HI$. Then, $x + y = AI + IJ = AJ = AB = 1$. Also, using similarity relations,
+
+\begin{align*}
+\frac{AI}{AB} = \frac{y}{1     } &= \frac{x}{y} = \frac{HI}{JB} \\
+\end{align*}
+
+Substituting $x = y^2$ from the second equation into the first, $y^2 + y - 1 = 0$. The only positive solution of this equation from the quadratic formula is $y = \frac{-1 + \sqrt{5}}{2}$. Thus, $x = y^2 = \frac{3- \sqrt{5}}{2}$. The ratio of the areas is the ratio of the side lengths $\displaystyle \frac{x^2}{1} = x^2$. Scaling back to the original pentagon in the problem, however, which has area 1, the area of the smaller pentagon is just $x^2$, which is $\boxed{\frac{7 - 3\sqrt{5}}{2}}$.
+
+\begin{center}
+\begin{asy}[viewportwidth=6cm]
+import graph;
+import olympiad;
+unitsize(2cm);
+real c1,c2,s1,s2;
+c1 = (sqrt(5)-1)/4;
+c2 = (sqrt(5)+1)/4;
+s1 = sqrt(10+2*sqrt(5))/4;
+s2 = sqrt(10-2*sqrt(5))/4;
+pair A,B,C,D,E;
+A = (0,1);
+B = (s1,c1);
+C = (s2,-c2);
+D = (-s2,-c2);
+E = (-s1,c1);
+draw(A--B--C--D--E--cycle);
+draw(A--C--E--B--D--cycle);
+label("$A$", A, up);
+label("$B$", B, right);
+label("$C$", C, SE);
+label("$D$", D, SW);
+label("$E$", E, left);
+label("$F$", midpoint(C--D), up);
+label("$G$", midpoint(D--E), NE);
+label("$H$", midpoint(E--A), SE);
+label("$I$", midpoint(A--B), SW);
+label("$J$", midpoint(B--C), NW);
+\end{asy}
+\end{center}
+
+\end{solution}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{Time limit: 30 minutes.}
+\newcommand{\righthead}{\fdbox{Round}{Practice Power}}
+
+
+\newcounter{problem_count}
+
+\section{Introduction}
+
+You are all familiar with taking the remainder of a number
+when divided by another number. Modular arithmetic is an
+extension of this study, analyzing properties of numbers
+when remainders are taken.
+
+For example, 11 leaves a remainder
+of 3 when divided by 4. However, 11 is not the only number
+with this property: 7, 15, 19, etc. on also have this property,
+as well as the negative numbers $-1$, $-5$, etc.
+We call these numbers \textit{congruent modulo 4}, which we
+will define more rigorously below.
+
+\section{Modulo Arithmetic}
+Let $a,b,m$ be integers. $a$ and $b$ are said to be \textit{congruent modulo m}
+if $m$ evenly divides $a - b$. We write this as
+\[a \equiv b \pmod{m}.\]
+For example, $1 \equiv 1 \pmod{5}$ since
+$1 - 1 = 0$ is divisible by $5$. Similarly, $1 \equiv 6 \pmod{5}$.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item Show $13 \equiv 1 \pmod{6}$.
+\item Show $14 \equiv 2 \pmod{6}$.
+\item Show $13 + 14 \equiv 1 + 2 \equiv 3 \pmod{6}$.
+\item Show $13 \times 14 \equiv 1 \times 2 \equiv 2 \pmod{6}$.
+\end{enumerate}
+\item \addtocounter{problem_count}{1}
+Let $a,b,c,d,m$ be integers such that $a \equiv b \pmod{m}$ and $c \equiv d \pmod{m}$.
+\begin{enumerate}
+\item Show $a + c \equiv b + d \pmod{m}$.
+\item Show $a - c \equiv b - d \pmod{m}$.
+\item Show $a \times c \equiv b \times d \pmod{m}$.
+\end{enumerate}
+\end{enumerate}
+
+So far we have seen that addition, subtraction, and multiplication
+are preserved under modulo arithmetic. \textit{The same is not
+necessarily true for division}.
+
+\begin{enumerate} \addtocounter{enumi}{\value{problem_count}}
+
+\item \addtocounter{problem_count}{1}
+We know that if a prime $p$ evenly divides $ab$, then $p$ must divide at least one of $a$ or $b$. (Convince yourself of this!) Use this fact to prove that if
+\[mx \equiv nx \pmod{p}\]
+for $x$ not divisible by p, then
+\[m \equiv n \pmod{p}.\]
+
+\item \addtocounter{problem_count}{1}
+What if the modulo is not prime?
+\begin{enumerate}
+\item We know that $10 \equiv 4 \pmod{6}$. Can we divide both sides by 2? Is
+$5 \equiv 2 \pmod{6}$?
+\item We know that $25 \equiv 55 \pmod{6}$. Can we divide both sides by 5? Is
+$5 \equiv 11 \pmod{6}$?
+\end{enumerate}
+What makes (a) any different from (b)? It turns out we can divide
+when the greatest common divisor of the number to be divided and the mod $m$ is 1. For instance,
+\[ 5a \equiv 5b \pmod{6} \]
+implies
+\[ a \equiv b \pmod{6} \]
+since $\gcd( a, b ) = 1.$
+
+\item \addtocounter{problem_count}{1}
+\begin{enumerate}
+\item Find positive $x < 10$ such that $3x \equiv 1 \pmod{10}$.
+\item Find positive $x < 10$ such that $7x \equiv 1 \pmod{10}$.
+\item Find positive $x < 10$ such that $9x \equiv 1 \pmod{10}$.
+\item Can we find $x$ such that $2x \equiv 1 \pmod{10}$?
+\item Can we find $x$ such that $5x \equiv 1 \pmod{10}$?
+\item For what values of $a$ can we find $x$ such that $ax \equiv 1 \pmod{10}$?
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

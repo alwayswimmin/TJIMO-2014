@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[paperwidth=8.5in, paperheight=11in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphicx}
+\usepackage{asymptote}
+\usepackage{multicol}
+
+%my inputs
+\usepackage{framed}
+\newtheorem*{definition}{Definition}
+
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=\parskip \thm@postskip=0pt
+}
+\makeatother
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{answer}{Answer}
+\newtheorem*{solution1}{Solution 1}
+\newtheorem*{solution2}{Solution 2}
+
+\def\st{^{\scriptstyle\mbox{st}}}
+\def\nd{^{\scriptstyle\mbox{nd}}}
+\def\rd{^{\scriptstyle\mbox{rd}}}
+\def\th{^{\scriptstyle\mbox{th}}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\logo}
+\rhead{\righthead\vspace{-1em}}
+\rfoot{\emph{\sevenpoints}}
+\setlength{\headheight}{11em} %previously 16em
+\setlength{\headsep}{2em}
+\setlength{\voffset}{-1in}
+\setlength{\hoffset}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{0.25in}
+\newlength\FHoffset\setlength\FHoffset{0.5in}
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+\newlength\FHleft\setlength\FHleft{0in}
+\newlength\FHright\setlength\FHright{-1in}
+\newbox\FHline\setbox\FHline=\hbox{\hsize=\paperwidth%
+  \hspace*{\FHleft}%
+  \rule{\dimexpr\headwidth-\FHleft-\FHright\relax}{\headrulewidth}\hspace*{\FHright}%
+}
+\renewcommand\headrule{\vskip-.7\baselineskip\copy\FHline}
+\newcommand{\olyinfo}[1]{\begin{flushright} \itshape #1 \end{flushright}\medskip}
+\newcommand{\nmbox}[1]{\fbox{\sffamily\LARGE\vphantom y#1} \par\vspace{1em}} % normal box
+\newcommand{\fdbox}[2]{\fbox{\sffamily\LARGE\vphantom y#1: \bfseries #2} \par\vspace{1em}} % field box
+
+
+\begin{document}
+
+\newcommand{\logo}{%
+\begin{minipage}[b]{22em}
+\centering\noindent
+%{\huge\sffamily Intermediate Math Open}
+\\[0.5em]
+\begin{minipage}[t][4em][t]{12em} \centering
+{\huge \bfseries ${\bf 26^{\text{th}}}$ TJIMO } \\
+\textsc{\large Alexandria, Virginia}
+\end{minipage}
+\end{minipage}
+\vspace*{-0.05em}
+}
+\newcommand{\sevenpoints}{Time limit: 30 minutes.}
+\newcommand{\righthead}{\fdbox{Round}{Team}}
+
+
+
+\begin{enumerate}
+
+
+\item Let $a_b$ be a number expressed in base $b$. Express\[2014_{5}+2014_{6}+2014_{7}+2014_{8}+2014_{9}\]in base 10.
+
+\item Let $ABCD$ be a square of sidelength 7. $E$ is the point on segment $AB$ such that $AE = 4$, $F$ is the point on segment $BC$ such that $BF = 5$, $G$ is the point on segment $CD$ such that $CG = 2$, and $H$ is the point on segment $DA$ such that $DH = 3$. Find the area of hexagon $AEFCGH$.
+
+\item Ashley rolls an $n$-sided die (numbered 1 through $n$) $n$ times, where $n$ is a positive integer. If the probability that she rolls at least one 1 is equal to $\frac{175}{n^n}$, find the value of $n$.
+
+\item Let $ABCDEFGH$ be a regular octagon. Find the value of\[\angle ABH + \angle ACH + \angle ADH + \angle AEH + \angle AFH + \angle AGH.\]
+
+\item Find the remainder when \[7 \times 77 \times 777 \times 7777 \times \cdots \times \underbrace{777\cdots 77}_{\text{2014 7's}}\]is divided by 8.
+
+\item The diagonal of a rectangle has length 21, and its area is equal to 200. What is the sum of the width and length of the rectangle? 
+
+\item There are 107 playable characters in the game Dota 2, in which two teams of five players face off against each other. Each team is allowed to ban 5 characters from the 107 characters, so that the opposing team cannot choose any of those five characters. Kevin, Perry, Junyoung, Minjae, and Jonathan decide to play a game of Dota 2. Kevin only knows how to play the characters Lich and Alchemist. If the other team selects five characters to ban randomly, find the probability that Kevin is able to play either Lich or Alchemist, assuming that none of his teammates choose either Lich or Alchemist. 
+
+\item Let $ABC$ be a triangle such that $AB = 13$, $BC = 14$, and $CA = 15$. Squares $ABEF$ and $BCGH$ are drawn outside of triangle $ABC$. Find the area of triangle $BEH$.
+
+\item If Zalec Hang is playing a game where he randomly picks three distinct numbers from 1 to 10. What is the probability that no two numbers that Zalec chose are consecutive?
+
+\item Define the function $f(x, y, z)$ by\[f(x, y, z) = x^{y^z} - x^{z^y} + y^{z^x} - y^{x^z} + z^{x^y} - z^{y^x}.\]Find the value of\[f(7, 8, 9) + f(7, 9, 8) + f(8, 7, 9) + f(8, 9, 7) + f(9, 7, 8) + f(9, 8, 7).\]
+
+\end{enumerate}
+
+
+\eject
+
+
+\end{document}
